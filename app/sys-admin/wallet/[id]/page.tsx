@@ -158,7 +158,7 @@ export default function WalletDetailsPage() {
 
     const getUserRoleLabel = () => {
         const role = getUserRole()
-        return role === 'RIDER' ? 'Rider' : role === 'RODIE' ? 'Roadie' : 'User'
+        return role === 'RIDER' ? 'Driver' : role === 'RODIE' ? 'Mechanic' : 'User'
     }
 
     const getUserRoleColor = () => {

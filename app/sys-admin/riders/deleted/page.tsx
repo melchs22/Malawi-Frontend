@@ -43,7 +43,7 @@ export default function DeletedRidersPage() {
             await restoreRider(rider.id)
             toast({
                 title: "Success",
-                description: "Rider restored successfully"
+                description: "Driver restored successfully"
             })
             fetchDeletedRiders()
         } catch (err: any) {
@@ -110,9 +110,9 @@ export default function DeletedRidersPage() {
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                     <h1 className="text-3xl font-bold text-foreground flex items-center gap-2">
-                        <span className="text-muted-foreground font-normal">Riders /</span> Deleted
+                        <span className="text-muted-foreground font-normal">Drivers /</span> Deleted
                     </h1>
-                    <p className="text-muted-foreground mt-1">Manage deleted rider accounts</p>
+                    <p className="text-muted-foreground mt-1">Manage deleted driver accounts</p>
                 </div>
                 <div className="flex items-center gap-2" />
             </div>
@@ -121,7 +121,7 @@ export default function DeletedRidersPage() {
                 <Link href="/sys-admin/riders">
                     <Button variant="outline" size="sm" className="gap-2">
                         <ArrowLeft className="h-4 w-4" />
-                        Back to Riders
+                        Back to Drivers
                     </Button>
                 </Link>
             </div>

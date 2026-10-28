@@ -1,4 +1,4 @@
-const API_BASE_URL = ""
+import { API_BASE_URL } from "./api-config"
 
 let authToken: string | null = null
 
@@ -1865,7 +1865,7 @@ export async function checkBackendConnection(): Promise<{ connected: boolean; er
 // Local Permission Management (SQLite)
 export async function fetchLocalPermissions(userId: string | number): Promise<string[] | null> {
   try {
-    const response = await fetch(`/api/permissions?userId=${userId}`);
+    const response = await fetch(`/sys-api/permissions?userId=${userId}`);
     if (!response.ok) return null;
     const data = await response.json();
     return data.permissions;
@@ -1876,7 +1876,7 @@ export async function fetchLocalPermissions(userId: string | number): Promise<st
 }
 
 export async function saveLocalPermissions(userId: string | number, permissions: string[]): Promise<void> {
-  await fetch('/api/permissions', {
+  await fetch('/sys-api/permissions', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ userId: String(userId), permissions }),
@@ -2032,7 +2032,7 @@ export function isUserApproved(user: Rider | Roadie): boolean {
 }
 
 export function getUserTypeLabel(user: Rider | Roadie): string {
-  return user.role === 'RIDER' ? 'Rider' : 'Roadie'
+  return user.role === 'RIDER' ? 'Driver' : 'Mechanic'
 }
 
 export function getUserExternalId(user: Rider | Roadie): string {

@@ -99,8 +99,8 @@ export default function AuditLogsPage() {
       Document: "Documents",
       Role: "Roles & Permissions",
       Settings: "System Settings",
-      Roadie: "Roadies",
-      Rider: "Riders",
+      Roadie: "Mechanics",
+      Rider: "Drivers",
       Media: "Moderation",
     }
     return moduleMap[entityType] || entityType

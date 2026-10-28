@@ -37,7 +37,7 @@ export function buildActivityFeed(requests: Array<Record<string, unknown>>): Act
     const roadieName =
       (r.rodie_username as string) ||
       [r.rodie_first_name, r.rodie_last_name].filter(Boolean).join(" ") ||
-      "Roadie"
+      "Mechanic"
     const status = String(r.status || "").toUpperCase()
     const createdAt = r.created_at as string
     const updatedAt = (r.updated_at as string) || createdAt
@@ -55,7 +55,7 @@ export function buildActivityFeed(requests: Array<Record<string, unknown>>): Act
     if (status === "ACCEPTED" || status === "EN_ROUTE" || status === "STARTED") {
       items.push({
         id: `accepted-${r.id}`,
-        message: `${service} accepted by Roadie ${roadieName}`,
+        message: `${service} accepted by Mechanic ${roadieName}`,
         timestamp: (r.accepted_at as string) || updatedAt,
         sortTime: new Date((r.accepted_at as string) || updatedAt).getTime(),
       })
@@ -64,7 +64,7 @@ export function buildActivityFeed(requests: Array<Record<string, unknown>>): Act
     if (status === "COMPLETED") {
       items.push({
         id: `completed-${r.id}`,
-        message: `${service} completed by Roadie ${roadieName}`,
+        message: `${service} completed by Mechanic ${roadieName}`,
         timestamp: completedAt,
         sortTime: new Date(completedAt).getTime(),
       })

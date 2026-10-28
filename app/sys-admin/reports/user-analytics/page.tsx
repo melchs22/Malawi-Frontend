@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useToast } from "@/hooks/use-toast"
+import { API_BASE_URL } from "@/lib/api-config"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Calendar } from "@/components/ui/calendar"
 import { Label } from "@/components/ui/label"
@@ -78,7 +79,7 @@ export default function UserAnalyticsReportPage() {
             if (startDate) params.append("start_date", format(startDate, "yyyy-MM-dd"))
             if (endDate) params.append("end_date", format(endDate, "yyyy-MM-dd"))
 
-            const response = await fetch(`/api/auth/admin/reports/user-analytics?${params}`, {
+            const response = await fetch(`${API_BASE_URL}/api/auth/admin/reports/user-analytics?${params}`, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("access_token")}`,
                 }
@@ -182,37 +183,37 @@ export default function UserAnalyticsReportPage() {
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold">{metrics.total_registered_users}</div>
-                        <p className="text-xs text-gray-500 mt-1">Riders + Roadies</p>
+                        <p className="text-xs text-gray-500 mt-1">Drivers + Mechanics</p>
                     </CardContent>
                 </Card>
 
                 <Card>
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium text-gray-600">Total Riders</CardTitle>
+                        <CardTitle className="text-sm font-medium text-gray-600">Total Drivers</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold text-blue-600">{metrics.total_riders}</div>
-                        <p className="text-xs text-gray-500 mt-1">All registered riders</p>
+                        <p className="text-xs text-gray-500 mt-1">All registered drivers</p>
                     </CardContent>
                 </Card>
 
                 <Card>
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium text-gray-600">Total Roadies</CardTitle>
+                        <CardTitle className="text-sm font-medium text-gray-600">Total Mechanics</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold text-green-600">{metrics.total_roadies}</div>
-                        <p className="text-xs text-gray-500 mt-1">All service providers</p>
+                        <p className="text-xs text-gray-500 mt-1">All service mechanics</p>
                     </CardContent>
                 </Card>
 
                 <Card>
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium text-gray-600">Approved Roadies</CardTitle>
+                        <CardTitle className="text-sm font-medium text-gray-600">Approved Mechanics</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold text-green-600">{metrics.approved_roadies}</div>
-                        <p className="text-xs text-gray-500 mt-1">Active service providers</p>
+                        <p className="text-xs text-gray-500 mt-1">Active mechanics</p>
                     </CardContent>
                 </Card>
             </div>
@@ -221,7 +222,7 @@ export default function UserAnalyticsReportPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <Card>
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium">Active Riders (7d)</CardTitle>
+                        <CardTitle className="text-sm font-medium">Active Drivers (7d)</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold">{metrics.active_riders_7d}</div>
@@ -231,7 +232,7 @@ export default function UserAnalyticsReportPage() {
 
                 <Card>
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium">Active Roadies (7d)</CardTitle>
+                        <CardTitle className="text-sm font-medium">Active Mechanics (7d)</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold">{metrics.active_roadies_7d}</div>
@@ -241,7 +242,7 @@ export default function UserAnalyticsReportPage() {
 
                 <Card>
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium">Unapproved Roadies</CardTitle>
+                        <CardTitle className="text-sm font-medium">Unapproved Mechanics</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold text-yellow-600">{metrics.unapproved_roadies}</div>
@@ -254,7 +255,7 @@ export default function UserAnalyticsReportPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Card>
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium">Rider Activity Rate</CardTitle>
+                        <CardTitle className="text-sm font-medium">Driver Activity Rate</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold text-blue-600">{metrics.rider_activity_rate.toFixed(1)}%</div>
@@ -264,11 +265,11 @@ export default function UserAnalyticsReportPage() {
 
                 <Card>
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium">Roadie Activity Rate</CardTitle>
+                        <CardTitle className="text-sm font-medium">Mechanic Activity Rate</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold text-green-600">{metrics.roadie_activity_rate.toFixed(1)}%</div>
-                        <p className="text-xs text-gray-500">Out of approved roadies</p>
+                        <p className="text-xs text-gray-500">Out of approved mechanics</p>
                     </CardContent>
                 </Card>
             </div>
@@ -285,13 +286,13 @@ export default function UserAnalyticsReportPage() {
                                 labels: metrics.user_growth_trend.map(d => format(new Date(d.date), "MMM d")),
                                 datasets: [
                                     {
-                                        label: "Riders",
+                                        label: "Drivers",
                                         data: metrics.user_growth_trend.map(d => d.riders),
                                         borderColor: "#3b82f6",
                                         tension: 0.1,
                                     },
                                     {
-                                        label: "Roadies",
+                                        label: "Mechanics",
                                         data: metrics.user_growth_trend.map(d => d.roadies),
                                         borderColor: "#10b981",
                                         tension: 0.1,
@@ -315,7 +316,7 @@ export default function UserAnalyticsReportPage() {
                     <CardContent>
                         <Doughnut
                             data={{
-                                labels: ["Riders", "Roadies"],
+                                labels: ["Drivers", "Mechanics"],
                                 datasets: [
                                     {
                                         data: [metrics.user_distribution.riders, metrics.user_distribution.roadies],
@@ -342,7 +343,7 @@ export default function UserAnalyticsReportPage() {
                 <CardContent>
                     <Pie
                         data={{
-                            labels: ["Active Riders", "Inactive Riders", "Active Roadies", "Inactive Roadies"],
+                            labels: ["Active Drivers", "Inactive Drivers", "Active Mechanics", "Inactive Mechanics"],
                             datasets: [
                                 {
                                     data: [

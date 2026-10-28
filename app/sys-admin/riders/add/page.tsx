@@ -74,7 +74,7 @@ export default function AddRiderPage() {
                     console.error("Failed to upload profile image:", uploadErr)
                     toast({
                         title: "Warning",
-                        description: "Rider created but profile picture upload failed.",
+                        description: "Driver created but profile picture upload failed.",
                         variant: "destructive"
                     })
                 }
@@ -82,7 +82,7 @@ export default function AddRiderPage() {
 
             toast({
                 title: "Success",
-                description: "Rider created successfully"
+                description: "Driver created successfully"
             })
 
             // Redirect back to riders list
@@ -107,15 +107,15 @@ export default function AddRiderPage() {
                     <Link href="/sys-admin/riders">
                         <Button variant="ghost" className="gap-2 mb-4">
                             <ArrowLeft className="h-4 w-4" />
-                            Back to Riders
+                            Back to Drivers
                         </Button>
                     </Link>
 
                     <div className="flex items-center justify-between">
                         <div>
-                            <h1 className="text-3xl font-bold text-foreground">Add New Rider</h1>
+                            <h1 className="text-3xl font-bold text-foreground">Add New Driver</h1>
                             <p className="text-muted-foreground mt-2">
-                                Fill in the rider details below
+                                Fill in the driver details below
                             </p>
                         </div>
                     </div>
@@ -229,14 +229,14 @@ export default function AddRiderPage() {
                                 className="h-4 w-4 text-primary border-border rounded focus:ring-primary"
                             />
                             <label htmlFor="is_approved" className="text-sm font-medium text-muted-foreground">
-                                Activate rider immediately
+                                Activate driver immediately
                             </label>
                         </div>
 
                         {/* Profile Image Upload Section (Restricted to only Profile Picture) */}
                         <div className="pt-6 border-t">
                             <h3 className="text-lg font-medium text-foreground mb-4">Profile Image</h3>
-                            <p className="text-sm text-muted-foreground mb-4">Only profile picture upload is allowed for riders during creation.</p>
+                            <p className="text-sm text-muted-foreground mb-4">Only profile picture upload is allowed for drivers during creation.</p>
 
                             <div className="bg-muted/30 p-4 rounded-lg border border-dashed max-w-md">
                                 <label className="block text-sm font-medium text-muted-foreground mb-2">Profile Picture</label>
@@ -265,7 +265,7 @@ export default function AddRiderPage() {
                                 disabled={isSubmitting}
                             >
                                 <Save className="h-4 w-4" />
-                                {isSubmitting ? "Creating..." : "Create Rider"}
+                                {isSubmitting ? "Creating..." : "Create Driver"}
                             </Button>
                         </div>
                     </form>

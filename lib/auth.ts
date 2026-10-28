@@ -1,4 +1,4 @@
-const API_BASE_URL = ""
+import { API_BASE_URL } from "./api-config"
 
 export interface AdminUser {
   id: string

@@ -18,7 +18,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.2 0.01 260);
 
-  /* VEHIX BRAND COLORS (Official Logo) */
+  /* Smart Mobility Roadcare brand colors */
   /* Logo Orange (#F05A28) */
   --primary: #F05A28;
   --primary-foreground: #FFFFFF;
@@ -45,7 +45,7 @@
   --ring: oklch(0.65 0.23 45);
   /* Orange focus ring */
 
-  /* Charts - Using Vehix colors */
+  /* Charts - Using Smart Mobility Roadcare colors */
   --chart-1: oklch(0.65 0.23 45);
   /* Orange */
   --chart-2: oklch(0.22 0.08 260);

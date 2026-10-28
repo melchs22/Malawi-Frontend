@@ -48,13 +48,13 @@ export default function DeletedRoadiesPage() {
             await restoreRoadie(roadie.id)
             toast({
                 title: "Success",
-                description: "Roadie restored successfully"
+                description: "Mechanic restored successfully"
             })
             fetchDeletedRoadies()
         } catch (err: unknown) {
             toast({
                 title: "Error",
-                description: err instanceof Error ? err.message : "Failed to restore roadie",
+                description: err instanceof Error ? err.message : "Failed to restore mechanic",
                 variant: "destructive"
             })
         }
@@ -66,14 +66,14 @@ export default function DeletedRoadiesPage() {
             await permanentlyDeleteUser(deleteTarget.id, 'RODIE')
             toast({
                 title: "Success",
-                description: "Roadie permanently deleted"
+                description: "Mechanic permanently deleted"
             })
             setDeleteTarget(null)
             fetchDeletedRoadies()
         } catch (err: unknown) {
             toast({
                 title: "Error",
-                description: err instanceof Error ? err.message : "Failed to permanently delete roadie",
+                description: err instanceof Error ? err.message : "Failed to permanently delete mechanic",
                 variant: "destructive"
             })
         }
@@ -149,7 +149,7 @@ export default function DeletedRoadiesPage() {
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                     <h1 className="text-3xl font-bold text-foreground flex items-center gap-2">
-                        <span className="text-muted-foreground font-normal">Roadies /</span> Deleted
+                        <span className="text-muted-foreground font-normal">Mechanics /</span> Deleted
                     </h1>
                     <p className="text-muted-foreground mt-1">
                         Restore deleted roadies or permanently remove test accounts. Accounts in pending deletion are auto-removed after 30 days.
@@ -161,7 +161,7 @@ export default function DeletedRoadiesPage() {
                 <Link href="/sys-admin/roadies">
                     <Button variant="outline" size="sm" className="gap-2">
                         <ArrowLeft className="h-4 w-4" />
-                        Back to Roadies
+                        Back to Mechanics
                     </Button>
                 </Link>
             </div>
@@ -175,7 +175,7 @@ export default function DeletedRoadiesPage() {
             <ConfirmModal
                 isOpen={!!deleteTarget}
                 onClose={() => setDeleteTarget(null)}
-                title="Permanently delete roadie?"
+                title="Permanently delete mechanic?"
                 description={
                     deleteTarget
                         ? `This will permanently delete ${deleteTarget.first_name} ${deleteTarget.last_name} (${deleteTarget.external_id}) and all associated data. This cannot be undone.`

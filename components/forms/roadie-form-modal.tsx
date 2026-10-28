@@ -62,9 +62,9 @@ export function RoadieFormModal({ isOpen, onClose, onSubmit, initialData }: Road
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>{initialData ? "Edit Roadie" : "Add Roadie"}</DialogTitle>
+          <DialogTitle>{initialData ? "Edit Mechanic" : "Add Mechanic"}</DialogTitle>
           <DialogDescription>
-            {initialData ? "Update roadie information" : "Create a new roadie account"}
+            {initialData ? "Update mechanic information" : "Create a new mechanic account"}
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">

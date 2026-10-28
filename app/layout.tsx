@@ -13,25 +13,17 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Vehix Admin",
-  description: "Professional control panel for roadside assistance platform",
+  title: "Smart Mobility Roadcare",
+  description: "Smart Mobility Roadcare administration platform",
   generator: "Melchizedek Tutu",
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: "/smart-mobility-roadcare-favicon.png",
+        type: "image/png",
       },
     ],
-    apple: "/apple-icon.png",
+    apple: "/smart-mobility-roadcare-apple-icon.png",
   },
 }
 

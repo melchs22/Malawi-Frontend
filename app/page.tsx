@@ -193,9 +193,9 @@ export default function Home() {
                     <div className="mb-8 animate-in fade-in zoom-in duration-500">
                         <div className="flex items-center justify-center gap-3">
                             <div className="h-16 w-16 rounded-xl overflow-hidden shadow-lg bg-white p-1">
-                                <img src="/vehix-logo.png" alt="Logo" className="w-full h-full object-contain rounded-lg" />
+                                <img src="/smart-mobility-roadcare-favicon.png" alt="Smart Mobility Roadcare" className="w-full h-full object-contain rounded-lg" />
                             </div>
-                            <span className="text-4xl font-extrabold tracking-tighter text-gray-900 drop-shadow-sm">Vehix</span>
+                            <span className="text-4xl font-extrabold tracking-tighter text-gray-900 drop-shadow-sm">Smart Mobility Roadcare</span>
                         </div>
                     </div>
 
@@ -253,8 +253,8 @@ export default function Home() {
                     <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
                         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
                             <div className="font-bold text-xl flex items-center gap-2">
-                                <img src="/vehix-logo.png" className="h-8 w-8 object-contain" alt="Vehix" />
-                                Vehix
+                                <img src="/smart-mobility-roadcare-favicon.png" className="h-8 w-8 object-contain" alt="Smart Mobility Roadcare" />
+                                Smart Mobility Roadcare
                             </div>
                             <div className="flex gap-4">
                                 {/* Sign In button removed as requested */}
@@ -280,8 +280,8 @@ export default function Home() {
                                         <div className="relative z-10 flex flex-col items-center">
                                             <div className="bg-blue-100 p-4 rounded-full mb-6 w-fit mx-auto"><Car className="h-10 w-10 text-blue-600" /></div>
                                             <h3 className="text-2xl font-bold mb-2">Request Help</h3>
-                                            <p className="text-gray-500 mb-6">Join as Rider if you own a vehicle and want peace of mind.</p>
-                                            <Button className="w-full mt-4 bg-blue-600">Join as Rider</Button>
+                                            <p className="text-gray-500 mb-6">Join as a driver if you own a vehicle and want peace of mind.</p>
+                                            <Button className="w-full mt-4 bg-blue-600">Join as Driver</Button>
                                         </div>
                                     </div>
                                 </Link>
@@ -298,8 +298,8 @@ export default function Home() {
                                         <div className="relative z-10 flex flex-col items-center">
                                             <div className="bg-green-100 p-4 rounded-full mb-6 w-fit mx-auto"><Wrench className="h-10 w-10 text-green-600" /></div>
                                             <h3 className="text-2xl font-bold mb-2">Provide Help</h3>
-                                            <p className="text-gray-500 mb-6">Join as Roadie to earn money by helping stranded drivers.</p>
-                                            <Button className="w-full mt-4 bg-green-600">Join as Roadie</Button>
+                                            <p className="text-gray-500 mb-6">Join as a mechanic to earn money by helping stranded drivers.</p>
+                                            <Button className="w-full mt-4 bg-green-600">Join as Mechanic</Button>
                                         </div>
                                     </div>
                                 </Link>

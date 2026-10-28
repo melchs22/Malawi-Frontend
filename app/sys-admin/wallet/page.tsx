@@ -223,8 +223,8 @@ export default function WalletsPage() {
             header: "User Type",
             accessor: "user_type",
             cell: (value) => {
-                if (value === "Rider") return <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-200 border-blue-200">Rider</Badge>
-                if (value === "Roadie") return <Badge className="bg-purple-100 text-purple-700 hover:bg-purple-200 border-purple-200">Roadie</Badge>
+                if (value === "Rider") return <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-200 border-blue-200">Driver</Badge>
+                if (value === "Roadie") return <Badge className="bg-purple-100 text-purple-700 hover:bg-purple-200 border-purple-200">Mechanic</Badge>
                 return <Badge variant="outline" className="text-muted-foreground">Unknown</Badge>
             }
         },
@@ -325,7 +325,7 @@ export default function WalletsPage() {
 
                         <Card className="border-blue-500/20 bg-gradient-to-br from-blue-500/5 to-transparent">
                             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                <CardTitle className="text-sm font-medium">Total Rider Wallet Balance</CardTitle>
+                                <CardTitle className="text-sm font-medium">Total Driver Wallet Balance</CardTitle>
                                 <User className="h-4 w-4 text-blue-500" />
                             </CardHeader>
                             <CardContent>
@@ -335,7 +335,7 @@ export default function WalletsPage() {
 
                         <Card className="border-purple-500/20 bg-gradient-to-br from-purple-500/5 to-transparent">
                             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                <CardTitle className="text-sm font-medium">Total Roadie Wallet Balance</CardTitle>
+                                <CardTitle className="text-sm font-medium">Total Mechanic Wallet Balance</CardTitle>
                                 <Wrench className="h-4 w-4 text-purple-500" />
                             </CardHeader>
                             <CardContent>
@@ -365,7 +365,7 @@ export default function WalletsPage() {
 
                         <Card className="border-blue-500/20 bg-gradient-to-br from-blue-500/5 to-transparent">
                             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                <CardTitle className="text-sm font-medium">Rider Wallets</CardTitle>
+                                <CardTitle className="text-sm font-medium">Driver Wallets</CardTitle>
                                 <User className="h-4 w-4 text-blue-500" />
                             </CardHeader>
                             <CardContent>
@@ -378,7 +378,7 @@ export default function WalletsPage() {
 
                         <Card className="border-purple-500/20 bg-gradient-to-br from-purple-500/5 to-transparent">
                             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                <CardTitle className="text-sm font-medium">Roadie Wallets</CardTitle>
+                                <CardTitle className="text-sm font-medium">Mechanic Wallets</CardTitle>
                                 <Wrench className="h-4 w-4 text-purple-500" />
                             </CardHeader>
                             <CardContent>
@@ -396,7 +396,7 @@ export default function WalletsPage() {
                             </CardHeader>
                             <CardContent>
                                 <div className="text-xl font-bold text-destructive">{formatCurrency(stats.outstandingRoadieBalance)}</div>
-                                <p className="text-xs text-muted-foreground mt-1">Negative Roadie wallets</p>
+                                <p className="text-xs text-muted-foreground mt-1">Negative mechanic wallets</p>
                             </CardContent>
                         </Card>
                     </div>
@@ -429,8 +429,8 @@ export default function WalletsPage() {
                                         </SelectTrigger>
                                         <SelectContent>
                                             <SelectItem value="all">All Users</SelectItem>
-                                            <SelectItem value="rider">Rider</SelectItem>
-                                            <SelectItem value="roadie">Roadie</SelectItem>
+                                            <SelectItem value="rider">Driver</SelectItem>
+                                            <SelectItem value="roadie">Mechanic</SelectItem>
                                         </SelectContent>
                                     </Select>
                                 </div>

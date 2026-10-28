@@ -25,13 +25,13 @@ export function AdminHeader() {
       <div className="flex items-center gap-3">
         <div className="p-1 rounded-lg">
           <img
-            src="/logo.png"
-            alt="Vehix Logo"
+            src="/smart-mobility-roadcare-favicon.png"
+            alt="Smart Mobility Roadcare"
             className="h-8 w-auto object-contain"
           />
         </div>
         <span className="hidden sm:inline text-lg font-black text-foreground tracking-tight">
-          VEHIX <span className="text-primary uppercase">Ops</span>
+          Smart Mobility <span className="text-primary">Roadcare</span>
         </span>
       </div>
 

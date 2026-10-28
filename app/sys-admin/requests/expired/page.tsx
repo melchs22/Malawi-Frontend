@@ -177,7 +177,7 @@ export default function ExpiredRequestsPage() {
 
     const handleExport = () => {
         try {
-            const headers = ['ID', 'Rider', 'Roadie', 'Service', 'Status', 'CreatedAt']
+            const headers = ['ID', 'Driver', 'Mechanic', 'Service', 'Status', 'CreatedAt']
             const csvData = filteredRequests.map(request => [
                 request.id,
                 `"${request.rider_username || ''}"`,
@@ -236,12 +236,12 @@ export default function ExpiredRequestsPage() {
             ),
         },
         {
-            header: "Rider",
+            header: "Driver",
             accessor: "rider_username" as const,
             cell: (value: string | null) => value || "Unassigned",
         },
         {
-            header: "Roadie",
+            header: "Mechanic",
             accessor: "rodie_username" as const,
             cell: (value: string | null) => value || "Unassigned",
         },
@@ -301,7 +301,7 @@ export default function ExpiredRequestsPage() {
                         Expired Requests
                     </h1>
                     <p className="text-sm text-muted-foreground mt-1">
-                        Requests that were not accepted by any Roadie within the time limit
+                        Requests that were not accepted by any mechanic within the time limit
                     </p>
                 </div>
                 <Button

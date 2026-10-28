@@ -62,9 +62,9 @@ export function RiderFormModal({ isOpen, onClose, onSubmit, initialData }: Rider
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>{initialData ? "Edit Rider" : "Add Rider"}</DialogTitle>
+          <DialogTitle>{initialData ? "Edit Driver" : "Add Driver"}</DialogTitle>
           <DialogDescription>
-            {initialData ? "Update rider information" : "Create a new rider account"}
+            {initialData ? "Update driver information" : "Create a new driver account"}
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">

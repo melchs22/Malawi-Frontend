@@ -440,7 +440,7 @@ export default function ServicesPage() {
 
   const handleExport = () => {
     try {
-      const headers = ['ID', 'Name', 'Code', 'Service Fee', 'Status', 'Roadies Offering', 'Has Image', 'Created At']
+      const headers = ['ID', 'Name', 'Code', 'Service Fee', 'Status', 'Mechanics Offering', 'Has Image', 'Created At']
       const csvData = services.map(service => [
         service.id,
         `"${service.name}"`,
@@ -550,11 +550,11 @@ export default function ServicesPage() {
             <TooltipTrigger asChild>
               <div className="flex items-center gap-2 text-sm text-foreground font-medium cursor-help">
                 <Users className="h-4 w-4 text-muted-foreground" />
-                <span>{value} roadies</span>
+                <span>{value} mechanics</span>
               </div>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Roadies offering this service</p>
+              <p>Mechanics offering this service</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
@@ -902,7 +902,7 @@ export default function ServicesPage() {
             onEdit={canChange ? handleEditClick : undefined}
             onDelete={canDelete ? handleDelete : undefined}
             deleteConfirmTitle="Delete Service"
-            deleteConfirmDescription="Are you sure you want to delete this service category? This may affect active roadies offering this service."
+            deleteConfirmDescription="Are you sure you want to delete this service category? This may affect active mechanics offering this service."
             renderConfirmDetails={(service) => (
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
@@ -914,7 +914,7 @@ export default function ServicesPage() {
                   <span className="font-mono text-primary">{service.code}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Roadie Count:</span>
+                  <span className="text-muted-foreground">Mechanic Count:</span>
                   <span className="text-white">{service.rodie_count || 0}</span>
                 </div>
                 {service.image && (

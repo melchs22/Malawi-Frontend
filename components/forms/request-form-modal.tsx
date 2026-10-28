@@ -67,18 +67,18 @@ export function RequestFormModal({
                 </DialogHeader>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="space-y-2">
-                        <Label htmlFor="rider">Rider *</Label>
+                        <Label htmlFor="rider">Driver *</Label>
                         <Select
                             value={formData.rider?.toString() || "0"}
                             onValueChange={(value) => setFormData({ ...formData, rider: parseInt(value) })}
                             required
                         >
                             <SelectTrigger>
-                                <SelectValue placeholder="Select a rider" />
+                                <SelectValue placeholder="Select a driver" />
                             </SelectTrigger>
                             <SelectContent>
                                 {riders.length === 0 ? (
-                                    <SelectItem value="0">No riders available</SelectItem>
+                                    <SelectItem value="0">No drivers available</SelectItem>
                                 ) : (
                                     riders.map((rider) => (
                                         <SelectItem key={rider.id} value={rider.id.toString()}>
@@ -89,23 +89,23 @@ export function RequestFormModal({
                             </SelectContent>
                         </Select>
                         {riders.length === 0 && (
-                            <p className="text-xs text-red-500">No riders available. Please create a rider first.</p>
+                            <p className="text-xs text-red-500">No drivers available. Please create a driver first.</p>
                         )}
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="roadie">Roadie (Optional)</Label>
+                        <Label htmlFor="roadie">Mechanic (Optional)</Label>
                         <Select
                             value={formData.rodie?.toString() || "none"}
                             onValueChange={(value) => setFormData({ ...formData, rodie: value === "none" ? null : parseInt(value) })}
                         >
                             <SelectTrigger>
-                                <SelectValue placeholder="Select a roadie" />
+                                <SelectValue placeholder="Select a mechanic" />
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectItem value="none">None</SelectItem>
                                 {roadies.length === 0 ? (
-                                    <SelectItem value="0">No roadies available</SelectItem>
+                                    <SelectItem value="0">No mechanics available</SelectItem>
                                 ) : (
                                     roadies.map((roadie) => (
                                         <SelectItem key={roadie.id} value={roadie.id.toString()}>

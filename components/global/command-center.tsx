@@ -81,11 +81,11 @@ export function CommandCenter() {
                 <CommandGroup heading="Management">
                     <CommandItem onSelect={() => runCommand(() => router.push("/sys-admin/roadies"))}>
                         <UserCheck className="mr-2 h-4 w-4" />
-                        <span>Roadies (Providers)</span>
+                        <span>Mechanics</span>
                     </CommandItem>
                     <CommandItem onSelect={() => runCommand(() => router.push("/sys-admin/riders"))}>
                         <Users className="mr-2 h-4 w-4" />
-                        <span>Riders (Customers)</span>
+                        <span>Drivers</span>
                     </CommandItem>
                     <CommandItem onSelect={() => runCommand(() => router.push("/sys-admin/wallet"))}>
                         <Wallet className="mr-2 h-4 w-4" />

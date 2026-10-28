@@ -469,7 +469,7 @@ export default function LandingSettingsPage() {
                         <CardHeader>
                             <CardTitle>Role Selection Cards</CardTitle>
                             <CardDescription>
-                                Customize the cards for Riders and Roadies.
+                                Customize the cards for Drivers and Mechanics.
                             </CardDescription>
                         </CardHeader>
                         <CardContent className="grid md:grid-cols-2 gap-8">
@@ -477,7 +477,7 @@ export default function LandingSettingsPage() {
                             <div className="space-y-4 border p-4 rounded-lg">
                                 <h3 className="font-bold flex items-center gap-2">
                                     <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                                    Rider Card
+                                    Driver Card
                                 </h3>
 
                                 <div className="space-y-2">
@@ -512,7 +512,7 @@ export default function LandingSettingsPage() {
                                     {settings.rider_image && (
                                         <img
                                             src={settings.rider_image}
-                                            alt="Rider Card Preview"
+                                            alt="Driver Card Preview"
                                             className="h-32 w-full object-cover rounded border border-border"
                                         />
                                     )}
@@ -523,7 +523,7 @@ export default function LandingSettingsPage() {
                             <div className="space-y-4 border p-4 rounded-lg">
                                 <h3 className="font-bold flex items-center gap-2">
                                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                                    Roadie Card
+                                    Mechanic Card
                                 </h3>
 
                                 <div className="space-y-2">
@@ -558,7 +558,7 @@ export default function LandingSettingsPage() {
                                     {settings.roadie_image && (
                                         <img
                                             src={settings.roadie_image}
-                                            alt="Roadie Card Preview"
+                                            alt="Mechanic Card Preview"
                                             className="h-32 w-full object-cover rounded border border-border"
                                         />
                                     )}

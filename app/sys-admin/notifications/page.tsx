@@ -208,7 +208,7 @@ export default function NotificationsPage() {
             } else {
                 // Send to entire audience (all riders or all roadies)
                 await sendNotificationToAudience()
-                alert(`Notification sent to all ${audienceType === "roadie" ? "roadies" : "riders"}!`)
+                alert(`Notification sent to all ${audienceType === "roadie" ? "mechanics" : "drivers"}!`)
             }
 
             // Reset form
@@ -313,11 +313,11 @@ export default function NotificationsPage() {
                                 >
                                     <div className="flex items-center space-x-2">
                                         <RadioGroupItem value="roadie" id="roadie" />
-                                        <Label htmlFor="roadie" className="font-normal cursor-pointer">Roadie</Label>
+                                        <Label htmlFor="roadie" className="font-normal cursor-pointer">Mechanic</Label>
                                     </div>
                                     <div className="flex items-center space-x-2">
                                         <RadioGroupItem value="rider" id="rider" />
-                                        <Label htmlFor="rider" className="font-normal cursor-pointer">Rider</Label>
+                                        <Label htmlFor="rider" className="font-normal cursor-pointer">Driver</Label>
                                     </div>
                                 </RadioGroup>
 
@@ -335,7 +335,7 @@ export default function NotificationsPage() {
                                     </div>
                                     <div className="flex items-center space-x-2">
                                         <RadioGroupItem value="audience" id="audience" />
-                                        <Label htmlFor="audience" className="font-normal cursor-pointer">All {audienceType === "roadie" ? "Roadies" : "Riders"}</Label>
+                                        <Label htmlFor="audience" className="font-normal cursor-pointer">All {audienceType === "roadie" ? "Mechanics" : "Drivers"}</Label>
                                     </div>
                                 </RadioGroup>
 
@@ -343,7 +343,7 @@ export default function NotificationsPage() {
                                     <div className="space-y-3">
                                         <div className="flex items-center justify-between">
                                             <Label className="text-sm font-medium">
-                                                Select {audienceType === "roadie" ? "Roadies" : "Riders"} 
+                                                Select {audienceType === "roadie" ? "Mechanics" : "Drivers"}
                                                 {selectedUserIds.size > 0 && ` (${selectedUserIds.size} selected)`}
                                             </Label>
                                             {currentSelectionOptions.length > 0 && (
@@ -375,12 +375,12 @@ export default function NotificationsPage() {
                                             <PopoverContent className="w-[--radix-popover-trigger-width] p-0" align="start">
                                                 <Command>
                                                     <CommandInput 
-                                                        placeholder={`Search ${audienceType === "roadie" ? "roadies" : "riders"}...`}
+                                                        placeholder={`Search ${audienceType === "roadie" ? "mechanics" : "drivers"}...`}
                                                         value={searchTerm}
                                                         onValueChange={setSearchTerm}
                                                     />
                                                     <CommandList>
-                                                        <CommandEmpty>No {audienceType === "roadie" ? "roadie" : "rider"} found.</CommandEmpty>
+                                                        <CommandEmpty>No {audienceType === "roadie" ? "mechanic" : "driver"} found.</CommandEmpty>
                                                         <CommandGroup>
                                                             {filteredOptions.map((option) => (
                                                                 <CommandItem

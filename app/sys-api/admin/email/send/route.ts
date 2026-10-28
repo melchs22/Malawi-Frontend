@@ -101,7 +101,7 @@ export async function POST(req: Request) {
                 break;
             case 'WELCOME':
                 html = getWelcomeTemplate({ ...data, subject: finalSubject });
-                finalSubject = data.subject || subject || 'Welcome to Vehix';
+                finalSubject = data.subject || subject || 'Welcome to Smart Mobility Roadcare';
                 break;
             case 'SERVICE_COMPLETED':
                 html = getServiceCompletedTemplate({ ...data, subject: finalSubject });
@@ -113,14 +113,14 @@ export async function POST(req: Request) {
                 break;
             case 'WELCOME_APPROVAL':
                 html = getWelcomeApprovalTemplate({ ...data, subject: finalSubject });
-                finalSubject = data.subject || subject || 'Welcome to Vehix - Account Approved';
+                finalSubject = data.subject || subject || 'Welcome to Smart Mobility Roadcare - Account Approved';
                 break;
             default:
                 return NextResponse.json({ error: 'Invalid template type' }, { status: 400 });
         }
 
         const mailOptions = {
-            from: `"Vehix App" <${process.env.GMAIL_USER}>`,
+            from: `"Smart Mobility Roadcare" <${process.env.GMAIL_USER}>`,
             to: Array.isArray(to) ? to.join(',') : to,
             subject: finalSubject,
             html: html,

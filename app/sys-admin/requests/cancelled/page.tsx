@@ -279,10 +279,10 @@ export default function CancelledRequestsPage() {
         try {
             const headers = [
                 'ID',
-                'Rider ID',
-                'Rider Username',
-                'Roadie ID',
-                'Roadie Username',
+                'Driver ID',
+                'Driver Username',
+                'Mechanic ID',
+                'Mechanic Username',
                 'Service Type ID',
                 'Service Type Name',
                 'Service Code',
@@ -405,8 +405,8 @@ export default function CancelledRequestsPage() {
             return request.cancelled_by.charAt(0).toUpperCase() + request.cancelled_by.slice(1)
         }
         // Try to infer from available data
-        if (request.rider && !request.rodie) return "Rider"
-        if (request.rodie && !request.rider) return "Roadie"
+        if (request.rider && !request.rodie) return "Driver"
+        if (request.rodie && !request.rider) return "Mechanic"
         if (request.rider && request.rodie) return "System/Admin"
         return "Unknown"
     }
@@ -427,7 +427,7 @@ export default function CancelledRequestsPage() {
             ),
         },
         {
-            header: "Rider",
+            header: "Driver",
             accessor: "rider_username" as const,
             cell: (value: string | null) => (
                 <span className={value ? "" : "text-muted-foreground italic"}>
@@ -436,7 +436,7 @@ export default function CancelledRequestsPage() {
             ),
         },
         {
-            header: "Roadie",
+            header: "Mechanic",
             accessor: "rodie_username" as const,
             cell: (value: string | null) => (
                 <span className={value ? "" : "text-muted-foreground italic"}>
@@ -642,8 +642,8 @@ export default function CancelledRequestsPage() {
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectItem value="all">All</SelectItem>
-                                    <SelectItem value="rider">Rider</SelectItem>
-                                    <SelectItem value="roadie">Roadie</SelectItem>
+                                    <SelectItem value="rider">Driver</SelectItem>
+                                    <SelectItem value="roadie">Mechanic</SelectItem>
                                     <SelectItem value="system">System/Admin</SelectItem>
                                 </SelectContent>
                             </Select>
@@ -703,8 +703,8 @@ export default function CancelledRequestsPage() {
                         No cancelled requests found for "{searchQuery}". Try searching by:
                         <ul className="list-disc pl-5 mt-1 space-y-1">
                             <li>Request ID</li>
-                            <li>Rider username</li>
-                            <li>Roadie username</li>
+                            <li>Driver username</li>
+                            <li>Mechanic username</li>
                             <li>Service name (e.g., BATTERY)</li>
                             <li>Service code</li>
                             <li>Cancellation reason</li>

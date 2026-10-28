@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useToast } from "@/hooks/use-toast"
+import { API_BASE_URL } from "@/lib/api-config"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Calendar } from "@/components/ui/calendar"
@@ -74,7 +75,7 @@ export default function JobsPerformanceReportPage() {
             if (startDate) params.append("start_date", format(startDate, "yyyy-MM-dd"))
             if (endDate) params.append("end_date", format(endDate, "yyyy-MM-dd"))
 
-            const response = await fetch(`/api/auth/admin/reports/jobs-performance/?${params}`, {
+            const response = await fetch(`${API_BASE_URL}/api/auth/admin/reports/jobs-performance/?${params}`, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("admin_access_token")}`,
                 }
@@ -213,7 +214,7 @@ export default function JobsPerformanceReportPage() {
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold text-yellow-600">{metrics.expired}</div>
-                        <p className="text-xs text-gray-500 mt-1">No Roadie accepted</p>
+                        <p className="text-xs text-gray-500 mt-1">No mechanic accepted</p>
                     </CardContent>
                 </Card>
             </div>
@@ -226,7 +227,7 @@ export default function JobsPerformanceReportPage() {
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold">{Math.round(metrics.average_response_time)}s</div>
-                        <p className="text-xs text-gray-500">By Roadies</p>
+                        <p className="text-xs text-gray-500">By Mechanics</p>
                     </CardContent>
                 </Card>
 

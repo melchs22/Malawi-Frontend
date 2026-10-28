@@ -150,8 +150,8 @@ export default function RoadiesTotalServicesPage() {
     return (
         <div className="space-y-6 print:p-0 print:space-y-0">
             <div className="print:hidden">
-                <h1 className="text-2xl font-normal text-gray-800">Roadie Total Service</h1>
-                <p className="text-sm text-gray-500">Home / Roadie Total Service</p>
+                <h1 className="text-2xl font-normal text-gray-800">Mechanic Total Services</h1>
+                <p className="text-sm text-gray-500">Home / Mechanic Total Services</p>
             </div>
 
             {/* ROADIES Section with Stats */}
@@ -164,11 +164,11 @@ export default function RoadiesTotalServicesPage() {
                     <div className="p-4 border-t">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                                <p className="text-sm text-blue-600 font-medium">Total Roadies</p>
+                                <p className="text-sm text-blue-600 font-medium">Total Mechanics</p>
                                 <p className="text-2xl font-bold text-blue-900">{stats.total}</p>
                             </div>
                             <div className="bg-green-50 p-4 rounded-lg border border-green-100">
-                                <p className="text-sm text-green-600 font-medium">Active Roadies</p>
+                                <p className="text-sm text-green-600 font-medium">Active Mechanics</p>
                                 <p className="text-2xl font-bold text-green-900">{stats.active}</p>
                             </div>
                             <div className="bg-purple-50 p-4 rounded-lg border border-purple-100">
@@ -204,7 +204,7 @@ export default function RoadiesTotalServicesPage() {
             {/* Main Content Card */}
             <Card className="rounded-lg shadow border-t-4 border-t-purple-600 bg-white print:shadow-none print:border-none">
                 <div className="p-4 border-b flex justify-between items-center print:hidden">
-                    <h2 className="text-lg font-medium text-gray-800">Roadies Total Services</h2>
+                    <h2 className="text-lg font-medium text-gray-800">Mechanic Total Services</h2>
                 </div>
 
                 <div className="p-4 space-y-4">
@@ -238,7 +238,7 @@ export default function RoadiesTotalServicesPage() {
                             <TableHeader className="bg-gray-50">
                                 <TableRow>
                                     <TableHead className="w-[100px] font-bold text-gray-700">ID</TableHead>
-                                    <TableHead className="font-bold text-gray-700">Roadie Detail</TableHead>
+                                    <TableHead className="font-bold text-gray-700">Mechanic Details</TableHead>
                                     <TableHead className="font-bold text-gray-700">#Completed Services</TableHead>
                                     <TableHead className="font-bold text-gray-700">Total Amount</TableHead>
                                 </TableRow>

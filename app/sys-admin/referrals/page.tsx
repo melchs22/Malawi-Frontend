@@ -105,8 +105,8 @@ export default function ReferralsPage() {
 
     const formatRole = (role?: string) => {
         if (!role) return "Unknown"
-        if (role === "RODIE" || role === "ROADIE") return "Roadie"
-        if (role === "RIDER") return "Rider"
+        if (role === "RODIE" || role === "ROADIE") return "Mechanic"
+        if (role === "RIDER") return "Driver"
         return role
     }
 

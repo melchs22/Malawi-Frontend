@@ -119,7 +119,7 @@ export default function AddRoadiePage() {
             console.error(" Create roadie error:", err)
             toast({
                 title: "Error",
-                description: "Failed to create provider",
+                description: "Failed to create mechanic",
                 variant: "destructive"
             })
         } finally {
@@ -134,15 +134,15 @@ export default function AddRoadiePage() {
                     <Link href="/sys-admin/roadies">
                         <Button variant="ghost" className="gap-2 mb-4">
                             <ArrowLeft className="h-4 w-4" />
-                            Back to Providers
+                            Back to Mechanics
                         </Button>
                     </Link>
 
                     <div className="flex items-center justify-between">
                         <div>
-                            <h1 className="text-3xl font-bold text-foreground">Add New Provider</h1>
+                            <h1 className="text-3xl font-bold text-foreground">Add New Mechanic</h1>
                             <p className="text-muted-foreground mt-2">
-                                Fill in the provider details below
+                                Fill in the mechanic details below
                             </p>
                         </div>
                     </div>
@@ -256,7 +256,7 @@ export default function AddRoadiePage() {
                                 className="h-4 w-4 text-primary border-border rounded focus:ring-primary"
                             />
                             <label htmlFor="is_approved" className="text-sm font-medium text-muted-foreground">
-                                Activate Roadie immediately
+                                Activate Mechanic immediately
                             </label>
                         </div>
 
@@ -335,7 +335,7 @@ export default function AddRoadiePage() {
                                 disabled={isSubmitting}
                             >
                                 <Save className="h-4 w-4" />
-                                {isSubmitting ? "Creating..." : "Create Provider"}
+                                {isSubmitting ? "Creating..." : "Create Mechanic"}
                             </Button>
                         </div>
                     </form>

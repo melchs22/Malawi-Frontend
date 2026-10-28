@@ -311,10 +311,10 @@ export default function RequestsPage() {
     try {
       const headers = [
         'ID',
-        'Rider ID',
-        'Rider Username',
-        'Roadie ID',
-        'Roadie Username',
+        'Driver ID',
+        'Driver Username',
+        'Mechanic ID',
+        'Mechanic Username',
         'Service Type ID',
         'Service Type Name',
         'Service Code',
@@ -460,7 +460,7 @@ export default function RequestsPage() {
       ),
     },
     {
-      header: "Rider",
+      header: "Driver",
       accessor: "rider_username" as const,
       cell: (value: string | null) => (
         <span className={value ? "" : "text-gray-400 italic"}>
@@ -469,7 +469,7 @@ export default function RequestsPage() {
       ),
     },
     {
-      header: "Roadie",
+      header: "Mechanic",
       accessor: "rodie_username" as const,
       cell: (value: string | null) => (
         <span className={value ? "" : "text-gray-400 italic"}>
@@ -756,8 +756,8 @@ export default function RequestsPage() {
             No results found for "{searchQuery}". Try searching by:
             <ul className="list-disc pl-5 mt-1 space-y-1 text-xs">
               <li>Request ID</li>
-              <li>Rider username</li>
-              <li>Roadie username</li>
+              <li>Driver username</li>
+              <li>Mechanic username</li>
               <li>Service name (e.g., BATTERY)</li>
               <li>Status (REQUESTED, ACCEPTED, etc.)</li>
             </ul>

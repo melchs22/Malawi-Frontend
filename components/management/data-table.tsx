@@ -157,14 +157,14 @@ export function DataTable<T extends { id: string | number }>({
 
     // Add Logo
     try {
-      doc.addImage('/vehix-logo.png', 'PNG', 14, 10, 20, 20)
+      doc.addImage('/smart-mobility-roadcare-favicon.png', 'PNG', 14, 10, 20, 20)
     } catch (e) {
       console.error("Logo failed to load", e)
     }
 
     doc.setTextColor(secondaryNavy[0], secondaryNavy[1], secondaryNavy[2])
     doc.setFontSize(20)
-    doc.text("VEHIX OPS", 38, 20)
+    doc.text("SMART MOBILITY ROADCARE", 38, 20)
     doc.setFontSize(11)
     doc.text(`${title || "Export Report"}`, 38, 27)
 

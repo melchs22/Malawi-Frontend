@@ -227,8 +227,8 @@ export default function RidersPage() {
 
       const currentUser = await getAdminProfile()
       AuditService.log(
-        "Delete Rider",
-        "Riders",
+        "Delete Driver",
+        "Drivers",
         `Rider: ${rider.first_name} ${rider.last_name} (${rider.username})`,
         currentUser?.username || currentUser?.name || currentUser?.email || "Unknown",
         { riderId: rider.id, externalId: rider.external_id }
@@ -236,7 +236,7 @@ export default function RidersPage() {
 
       toast({
         title: "Success",
-        description: "Rider deleted successfully"
+        description: "Driver deleted successfully"
       })
       fetchRiders()
     } catch (err) {
@@ -254,8 +254,8 @@ export default function RidersPage() {
 
       const currentUser = await getAdminProfile()
       AuditService.log(
-        "Bulk Delete Riders",
-        "Riders",
+        "Bulk Delete Drivers",
+        "Drivers",
         `Deleted ${selectedRiders.length} riders`,
         currentUser?.username || currentUser?.name || currentUser?.email || "Unknown",
         { count: selectedRiders.length, riderIds: selectedRiders.map(r => r.id) }
@@ -284,8 +284,8 @@ export default function RidersPage() {
 
       const currentUser = await getAdminProfile()
       AuditService.log(
-        newStatus ? "Approve Rider" : "Unapprove Rider",
-        "Riders",
+        newStatus ? "Approve Driver" : "Unapprove Driver",
+        "Drivers",
         `Rider: ${rider.first_name} ${rider.last_name} (${rider.username})`,
         currentUser?.username || currentUser?.name || currentUser?.email || "Unknown",
         { riderId: rider.id, externalId: rider.external_id, newStatus }
@@ -460,9 +460,9 @@ export default function RidersPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-foreground font-mono">Riders</h1>
+          <h1 className="text-3xl font-bold tracking-tight text-foreground font-mono">Drivers</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Manage Rider's Accounts
+            Manage Driver Accounts
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -472,18 +472,18 @@ export default function RidersPage() {
             className="gap-2 bg-primary hover:bg-primary/90 text-white font-mono h-10"
           >
             <Plus className="h-4 w-4" />
-            Add Rider
+            Add Driver
           </PermissionButton>
         </div>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 font-mono">
         {[
-          { label: "Total Riders", value: totalRiders, color: "text-foreground" },
-          { label: "Active Riders", value: activeRiders, color: "text-emerald-500" },
-          { label: "Inactive Riders", value: inactiveRiders, color: "text-muted-foreground" },
-          { label: "Activated Riders", value: activatedRiders, color: "text-blue-500" },
-          { label: "Deactivated Riders", value: deactivatedRiders, color: "text-amber-500" },
+          { label: "Total Drivers", value: totalRiders, color: "text-foreground" },
+          { label: "Active Drivers", value: activeRiders, color: "text-emerald-500" },
+          { label: "Inactive Drivers", value: inactiveRiders, color: "text-muted-foreground" },
+          { label: "Activated Drivers", value: activatedRiders, color: "text-blue-500" },
+          { label: "Deactivated Drivers", value: deactivatedRiders, color: "text-amber-500" },
           { label: "Active Requests", value: activeRequestCount, color: "text-purple-500" },
         ].map((stat) => (
           <Card key={stat.label} className="border-border/50 shadow-sm">
@@ -502,7 +502,7 @@ export default function RidersPage() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 type="text"
-                placeholder="Search by Rider ID, name, email, phone, or username..."
+                placeholder="Search by Driver ID, name, email, phone, or username..."
                 value={searchInput}
                 onChange={handleSearchChange}
                 className="pl-10 pr-20 font-mono text-sm bg-background border-border"
@@ -712,10 +712,10 @@ export default function RidersPage() {
             onDelete={canDelete ? handleDelete : undefined}
             onBulkDelete={canDelete ? handleBulkDelete : undefined}
             onExport={() => { }} // Now handled internally by DataTable
-            deleteConfirmTitle="Delete Rider"
-            deleteConfirmDescription="Are you sure you want to delete this rider account? This action cannot be undone."
-            bulkDeleteConfirmTitle="Delete Multiple Riders"
-            bulkDeleteConfirmDescription="Are you sure you want to delete the selected rider accounts? This action cannot be undone."
+            deleteConfirmTitle="Delete Driver"
+            deleteConfirmDescription="Are you sure you want to delete this driver account? This action cannot be undone."
+            bulkDeleteConfirmTitle="Delete Multiple Drivers"
+            bulkDeleteConfirmDescription="Are you sure you want to delete the selected driver accounts? This action cannot be undone."
             renderConfirmDetails={(rider) => (
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">

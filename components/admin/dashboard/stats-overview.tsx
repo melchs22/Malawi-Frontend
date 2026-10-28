@@ -68,21 +68,21 @@ export function StatsOverview({ stats }: { stats: Record<string, unknown> }) {
             sub="Realtime ongoing"
           />
           <StatCard
-            title="Online Roadies"
+            title="Online Mechanics"
             value={s.onlineRoadies}
             icon={<UserCheck className="h-4 w-4 text-emerald-500" />}
             accent="text-emerald-600"
             href="/sys-admin/live-map"
           />
           <StatCard
-            title="On-Job Roadies"
+            title="Mechanics on Jobs"
             value={s.onJobRoadies}
             icon={<Briefcase className="h-4 w-4 text-orange-500" />}
             accent="text-orange-600"
             href="/sys-admin/live-map"
           />
           <StatCard
-            title="Active Riders"
+            title="Active Drivers"
             value={s.activeRiders}
             icon={<Users className="h-4 w-4 text-blue-500" />}
             accent="text-blue-600"

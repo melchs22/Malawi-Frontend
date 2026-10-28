@@ -65,7 +65,7 @@ export function TopProviders({ roadies }: { roadies: any[] }) {
     return (
         <div className="glass-card p-6 h-full border-t-4 border-t-emerald-500/50">
             <div className="flex justify-between items-center mb-6">
-                <h3 className="text-lg font-bold text-foreground">Top Providers</h3>
+                <h3 className="text-lg font-bold text-foreground">Top Mechanics</h3>
                 <Award className="h-5 w-5 text-amber-500" />
             </div>
             <div className="space-y-4">

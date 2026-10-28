@@ -151,7 +151,7 @@ export default function FinancialReportPage() {
                     return {
                         username: user?.username || `User #${w.user}`,
                         balance: parseFloat(w.balance),
-                        role: rider ? 'Rider' : (roadie ? 'Roadie' : 'Unknown')
+                        role: rider ? 'Driver' : (roadie ? 'Mechanic' : 'Unknown')
                     }
                 })
 

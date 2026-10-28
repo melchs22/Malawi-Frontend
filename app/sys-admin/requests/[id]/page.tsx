@@ -219,13 +219,13 @@ export default function RequestDetailPage() {
 
   const getRiderName = (riderId: number) => {
     const rider = riders.find(r => r.id === riderId)
-    return rider ? `${rider.first_name} ${rider.last_name}` : `Rider #${riderId}`
+    return rider ? `${rider.first_name} ${rider.last_name}` : `Driver #${riderId}`
   }
 
   const getRoadieName = (roadieId: number | null) => {
     if (!roadieId) return "None"
     const roadie = roadies.find(r => r.id === roadieId)
-    return roadie ? `${roadie.first_name} ${roadie.last_name}` : `Roadie #${roadieId}`
+    return roadie ? `${roadie.first_name} ${roadie.last_name}` : `Mechanic #${roadieId}`
   }
 
   const formatCoordinate = (coord: any): string => {
@@ -483,19 +483,19 @@ export default function RequestDetailPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <User className="h-4 w-4" />
-                Rider
+                Driver
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="rider">Rider</Label>
+                <Label htmlFor="rider">Driver</Label>
                 {isEditing ? (
                   <Select
                     value={formData.rider?.toString() || "0"}
                     onValueChange={(value) => setFormData({ ...formData, rider: parseInt(value) })}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select rider" />
+                      <SelectValue placeholder="Select driver" />
                     </SelectTrigger>
                     <SelectContent>
                       {riders.map((rider) => (
@@ -519,19 +519,19 @@ export default function RequestDetailPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <User className="h-4 w-4" />
-                Roadie
+                Mechanic
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="rodie">Roadie</Label>
+                <Label htmlFor="rodie">Mechanic</Label>
                 {isEditing ? (
                   <Select
                     value={formData.rodie?.toString() || ""}
                     onValueChange={(value) => setFormData({ ...formData, rodie: value ? parseInt(value) : null })}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select roadie" />
+                      <SelectValue placeholder="Select mechanic" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="">None</SelectItem>
@@ -635,11 +635,11 @@ export default function RequestDetailPage() {
             </CardHeader>
             <CardContent className="grid gap-4 md:grid-cols-2">
               <div>
-                <p className="text-sm font-medium text-muted-foreground mb-2">Rider to Roadie</p>
+                <p className="text-sm font-medium text-muted-foreground mb-2">Driver to Mechanic</p>
                 {renderRating(request.rider_to_roadie_rating || request.roadie_rating || request.ratings?.find((rating: any) => rating.target_role === "ROADIE"), "Rating")}
               </div>
               <div>
-                <p className="text-sm font-medium text-muted-foreground mb-2">Roadie to Rider</p>
+                <p className="text-sm font-medium text-muted-foreground mb-2">Mechanic to Driver</p>
                 {renderRating(request.roadie_to_rider_rating || request.rider_rating || request.ratings?.find((rating: any) => rating.target_role === "RIDER"), "Rating")}
               </div>
             </CardContent>
@@ -818,7 +818,7 @@ export default function RequestDetailPage() {
         <CardHeader>
           <CardTitle>Ratings & Comments</CardTitle>
           <CardDescription>
-            Star ratings and optional experience comments from the rider and roadie after completion
+            Star ratings and optional experience comments from the driver and mechanic after completion
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -906,7 +906,7 @@ export default function RequestDetailPage() {
                   <Popup>
                     <div className="text-sm">
                       <p className="font-semibold">{request.rider_username}</p>
-                      <p className="text-xs text-muted-foreground">Rider Location</p>
+                      <p className="text-xs text-muted-foreground">Driver Location</p>
                       <p className="text-xs font-mono mt-1">
                         {formatCoordinate(request.rider_lat)}, {formatCoordinate(request.rider_lng)}
                       </p>
@@ -922,8 +922,8 @@ export default function RequestDetailPage() {
                   >
                     <Popup>
                       <div className="text-sm">
-                        <p className="font-semibold">Roadie #{routeInfo.rodie.id}</p>
-                        <p className="text-xs text-muted-foreground">Roadie Location</p>
+                        <p className="font-semibold">Mechanic #{routeInfo.rodie.id}</p>
+                        <p className="text-xs text-muted-foreground">Mechanic Location</p>
                         <p className="text-xs font-mono mt-1">
                           {formatCoordinate(routeInfo.rodie.lat)}, {formatCoordinate(routeInfo.rodie.lng)}
                         </p>
@@ -971,7 +971,7 @@ export default function RequestDetailPage() {
               <span className="font-medium text-white">#{request.id}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Rider:</span>
+              <span className="text-muted-foreground">Driver:</span>
               <span className="text-primary">{request.rider_username}</span>
             </div>
           </div>

@@ -13,7 +13,7 @@ export async function POST(req: Request) {
 
         const secret = generateSecret();
         const otpauth = generateURI({
-            issuer: 'VehixAdmin',
+            issuer: 'Smart Mobility Roadcare',
             label: username,
             secret,
             algorithm: 'sha1',

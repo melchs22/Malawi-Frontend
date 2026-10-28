@@ -247,10 +247,10 @@ export default function AcceptedRequestsPage() {
         try {
             const headers = [
                 'ID',
-                'Rider ID',
-                'Rider Username',
-                'Roadie ID',
-                'Roadie Username',
+                'Driver ID',
+                'Driver Username',
+                'Mechanic ID',
+                'Mechanic Username',
                 'Service Type ID',
                 'Service Type Name',
                 'Service Code',
@@ -369,7 +369,7 @@ export default function AcceptedRequestsPage() {
             ),
         },
         {
-            header: "Rider",
+            header: "Driver",
             accessor: "rider_username" as const,
             cell: (value: string | null) => (
                 <span className={value ? "" : "text-muted-foreground italic"}>
@@ -378,7 +378,7 @@ export default function AcceptedRequestsPage() {
             ),
         },
         {
-            header: "Roadie",
+            header: "Mechanic",
             accessor: "rodie_username" as const,
             cell: (value: string | null) => (
                 <span className={value ? "" : "text-muted-foreground italic"}>
@@ -615,8 +615,8 @@ export default function AcceptedRequestsPage() {
                         No accepted requests found for "{searchQuery}". Try searching by:
                         <ul className="list-disc pl-5 mt-1 space-y-1">
                             <li>Request ID</li>
-                            <li>Rider username</li>
-                            <li>Roadie username</li>
+                            <li>Driver username</li>
+                            <li>Mechanic username</li>
                             <li>Service name (e.g., BATTERY)</li>
                             <li>Service code</li>
                             <li>Location coordinates</li>

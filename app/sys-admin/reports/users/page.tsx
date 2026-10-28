@@ -183,8 +183,8 @@ export default function UserAnalyticsPage() {
 
             // User distribution by role
             const usersByRole = [
-                { name: 'Riders', value: riders.length, color: COLORS.riders },
-                { name: 'Roadies', value: roadies.length, color: COLORS.roadies },
+                { name: 'Drivers', value: riders.length, color: COLORS.riders },
+                { name: 'Mechanics', value: roadies.length, color: COLORS.roadies },
                 { name: 'Admins', value: admins.length, color: COLORS.admins }
             ]
 
@@ -218,8 +218,8 @@ export default function UserAnalyticsPage() {
 
             // Recent registrations (last 10 within date range)
             const allUsers = [
-                ...riders.map(r => ({ ...r, role: 'Rider', date: r.created_at })),
-                ...roadies.map(r => ({ ...r, role: 'Roadie', date: r.created_at }))
+                ...riders.map(r => ({ ...r, role: 'Driver', date: r.created_at })),
+                ...roadies.map(r => ({ ...r, role: 'Mechanic', date: r.created_at }))
             ]
                 .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                 .slice(0, 10)
@@ -287,16 +287,16 @@ export default function UserAnalyticsPage() {
             ['User Analytics Report'],
             ['Generated:', format(new Date(), 'PPP')],
             ['Date Range:', `${format(metrics.dateRange.start, 'PPP')} - ${format(metrics.dateRange.end, 'PPP')}`],
-            ['Role Filter:', selectedRole === 'all' ? 'All Users' : selectedRole === 'rider' ? 'Riders Only' : 'Roadies Only'],
+            ['Role Filter:', selectedRole === 'all' ? 'All Users' : selectedRole === 'rider' ? 'Drivers Only' : 'Mechanics Only'],
             ['Status Filter:', selectedStatus === 'all' ? 'All Status' : selectedStatus === 'approved' ? 'Approved Only' : 'Pending Only'],
             [],
             ['Metric', 'Value'],
             ['Total Users', metrics.totalUsers.toString()],
-            ['Total Riders', metrics.totalRiders.toString()],
-            ['Total Roadies', metrics.totalRoadies.toString()],
+            ['Total Drivers', metrics.totalRiders.toString()],
+            ['Total Mechanics', metrics.totalRoadies.toString()],
             ['Total Admins', metrics.totalAdmins.toString()],
-            ['Approved Riders', metrics.approvedRiders.toString()],
-            ['Approved Roadies', metrics.approvedRoadies.toString()],
+            ['Approved Drivers', metrics.approvedRiders.toString()],
+            ['Approved Mechanics', metrics.approvedRoadies.toString()],
             ['Approval Rate', `${metrics.approvalRate.toFixed(1)}%`],
             ['Active Users', metrics.activeUsers.toString()],
             ['Average LTV', `UGX ${metrics.averageLTV.toLocaleString()}`],
@@ -425,8 +425,8 @@ export default function UserAnalyticsPage() {
                                         </SelectTrigger>
                                         <SelectContent>
                                             <SelectItem value="all">All Users</SelectItem>
-                                            <SelectItem value="rider">Riders Only</SelectItem>
-                                            <SelectItem value="roadie">Roadies Only</SelectItem>
+                                            <SelectItem value="rider">Drivers Only</SelectItem>
+                                            <SelectItem value="roadie">Mechanics Only</SelectItem>
                                         </SelectContent>
                                     </Select>
                                 </div>
@@ -453,7 +453,7 @@ export default function UserAnalyticsPage() {
                                     <span className="text-xs text-muted-foreground font-mono">Active filters:</span>
                                     {selectedRole !== 'all' && (
                                         <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono">
-                                            Role: {selectedRole === 'rider' ? 'Riders' : 'Roadies'}
+                                            Role: {selectedRole === 'rider' ? 'Drivers' : 'Mechanics'}
                                             <X className="h-3 w-3 cursor-pointer" onClick={() => setSelectedRole('all')} />
                                         </span>
                                     )}
@@ -519,7 +519,7 @@ export default function UserAnalyticsPage() {
 
                             <Card className="border-purple-500/20 bg-gradient-to-br from-purple-500/5 to-transparent">
                                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                    <CardTitle className="text-sm font-medium">Riders</CardTitle>
+                                    <CardTitle className="text-sm font-medium">Drivers</CardTitle>
                                     <Users className="h-4 w-4 text-purple-500" />
                                 </CardHeader>
                                 <CardContent>
@@ -530,7 +530,7 @@ export default function UserAnalyticsPage() {
 
                             <Card className="border-indigo-500/20 bg-gradient-to-br from-indigo-500/5 to-transparent">
                                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                    <CardTitle className="text-sm font-medium">Roadies</CardTitle>
+                                    <CardTitle className="text-sm font-medium">Mechanics</CardTitle>
                                     <UserCheck className="h-4 w-4 text-indigo-500" />
                                 </CardHeader>
                                 <CardContent>
@@ -620,8 +620,8 @@ export default function UserAnalyticsPage() {
                                             <YAxis />
                                             <Tooltip />
                                             <Legend />
-                                            <Line type="monotone" dataKey="riders" stroke={COLORS.riders} strokeWidth={2} name="Riders" />
-                                            <Line type="monotone" dataKey="roadies" stroke={COLORS.roadies} strokeWidth={2} name="Roadies" />
+                                            <Line type="monotone" dataKey="riders" stroke={COLORS.riders} strokeWidth={2} name="Drivers" />
+                                            <Line type="monotone" dataKey="roadies" stroke={COLORS.roadies} strokeWidth={2} name="Mechanics" />
                                         </LineChart>
                                     </ResponsiveContainer>
                                 </CardContent>
@@ -641,7 +641,7 @@ export default function UserAnalyticsPage() {
                                     <div className="space-y-4">
                                         <div>
                                             <div className="flex items-center justify-between mb-2">
-                                                <span className="text-sm text-muted-foreground">Riders</span>
+                                                <span className="text-sm text-muted-foreground">Drivers</span>
                                                 <span className="text-sm font-medium">{metrics.approvedRiders} / {metrics.totalRiders}</span>
                                             </div>
                                             <div className="w-full bg-muted rounded-full h-2">
@@ -653,7 +653,7 @@ export default function UserAnalyticsPage() {
                                         </div>
                                         <div>
                                             <div className="flex items-center justify-between mb-2">
-                                                <span className="text-sm text-muted-foreground">Roadies</span>
+                                                <span className="text-sm text-muted-foreground">Mechanics</span>
                                                 <span className="text-sm font-medium">{metrics.approvedRoadies} / {metrics.totalRoadies}</span>
                                             </div>
                                             <div className="w-full bg-muted rounded-full h-2">
@@ -678,7 +678,7 @@ export default function UserAnalyticsPage() {
                                     <div className="space-y-4">
                                         <div>
                                             <div className="flex items-center justify-between mb-2">
-                                                <span className="text-sm text-muted-foreground">Riders</span>
+                                                <span className="text-sm text-muted-foreground">Drivers</span>
                                                 <span className="text-sm font-medium">{metrics.totalRiders - metrics.approvedRiders}</span>
                                             </div>
                                             <div className="w-full bg-muted rounded-full h-2">
@@ -690,7 +690,7 @@ export default function UserAnalyticsPage() {
                                         </div>
                                         <div>
                                             <div className="flex items-center justify-between mb-2">
-                                                <span className="text-sm text-muted-foreground">Roadies</span>
+                                                <span className="text-sm text-muted-foreground">Mechanics</span>
                                                 <span className="text-sm font-medium">{metrics.totalRoadies - metrics.approvedRoadies}</span>
                                             </div>
                                             <div className="w-full bg-muted rounded-full h-2">
@@ -719,7 +719,7 @@ export default function UserAnalyticsPage() {
                                                 <div className="flex items-center gap-3">
                                                     <div className={cn(
                                                         "flex items-center justify-center w-8 h-8 rounded-full font-bold text-sm",
-                                                        user.role === 'Rider' ? 'bg-purple-500/10 text-purple-500' : 'bg-indigo-500/10 text-indigo-500'
+                                                        user.role === 'Driver' ? 'bg-purple-500/10 text-purple-500' : 'bg-indigo-500/10 text-indigo-500'
                                                     )}>
                                                         {user.username.charAt(0).toUpperCase()}
                                                     </div>

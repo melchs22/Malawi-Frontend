@@ -69,10 +69,8 @@ const COLORS = {
 };
 
 // Logo Configuration
-const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://vehix-platform.com';
-const LOGO_URL = process.env.NEXT_PUBLIC_APP_URL
-  ? `${process.env.NEXT_PUBLIC_APP_URL}/vehix-logo.png`
-  : 'https://placehold.co/200x50/EA5E2A/ffffff?text=Vehix';
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://201.79.44.165';
+const LOGO_URL = `${BASE_URL}/smart-mobility-roadcare-logo.png`;
 
 const BaseLayout = (content: string, previewText: string = '') => `
 <!DOCTYPE html>
@@ -121,14 +119,14 @@ const BaseLayout = (content: string, previewText: string = '') => `
   <div class="container">
     <div class="header">
       <div class="logo-container">
-        <img src="${LOGO_URL}" alt="Vehix" class="logo" />
+        <img src="${LOGO_URL}" alt="Smart Mobility Roadcare" class="logo" />
       </div>
     </div>
     <div class="content">
       ${content}
     </div>
     <div class="footer">
-      <p>&copy; ${new Date().getFullYear()} Vehix Platform. All rights reserved.</p>
+      <p>&copy; ${new Date().getFullYear()} Smart Mobility Roadcare. All rights reserved.</p>
       <p>Kampala, Uganda</p>
       <p>Need help? <a href="mailto:support@vehix.com" style="color: ${COLORS.primary}; text-decoration: none;">Contact Support</a></p>
     </div>
@@ -215,14 +213,14 @@ export const getGeneralTemplate = (data: GeneralData) => {
 
 export const getWelcomeTemplate = (data: WelcomeData) => {
   const content = `
-      <h1 style="text-align: center; color: ${COLORS.secondary};">Welcome to Vehix, ${data.userName}!</h1>
+      <h1 style="text-align: center; color: ${COLORS.secondary};">Welcome to Smart Mobility Roadcare, ${data.userName}!</h1>
       <p>We are thrilled to have you join our platform as a <strong>${data.role}</strong>.</p>
       <p>Your account has been successfully created. To get started, please follow these steps:</p>
       
       <div style="background-color: ${COLORS.background}; padding: 20px; border-radius: 8px; margin: 20px 0;">
         <h3 style="margin-top: 0; color: ${COLORS.primary};">How to Start:</h3>
         <ol style="padding-left: 20px; color: ${COLORS.text};">
-          <li style="margin-bottom: 10px;">Download the <strong>Vehix App</strong> from the Google Play Store or Apple App Store.</li>
+          <li style="margin-bottom: 10px;">Download the <strong>Smart Mobility Roadcare app</strong> from the Google Play Store or Apple App Store.</li>
           <li style="margin-bottom: 10px;">Open the app and log in using your registered phone number.</li>
           <li style="margin-bottom: 10px;">Complete your profile and any required verifications.</li>
           <li>Tap "Go Online" to start accepting requests!</li>
@@ -233,7 +231,7 @@ export const getWelcomeTemplate = (data: WelcomeData) => {
         <strong>Tip:</strong> Keep your app updated to ensure you have the latest features and performance improvements.
       </div>
     `;
-  return BaseLayout(content, "Welcome to the Vehix Platform!");
+  return BaseLayout(content, "Welcome to Smart Mobility Roadcare!");
 };
 
 export const getServiceCompletedTemplate = (data: ServiceCompletedData) => {
@@ -272,24 +270,24 @@ export const getAccountApprovedTemplate = (data: AccountApprovedData) => {
       <h1 style="text-align: center;">You're Approved!</h1>
       <p>Hello ${data.userName},</p>
       <p>Great news! Your <strong>${data.role}</strong> account has been reviewed and approved by our administration team.</p>
-      <p>You can now start accepting requests and using the full capabilities of the Vehix app.</p>
+      <p>You can now start accepting requests and using the full capabilities of the Smart Mobility Roadcare app.</p>
       
       <div style="text-align: center;">
         <a href="${data.loginUrl || `${BASE_URL}/login`}" class="btn">Go to Dashboard</a>
       </div>
     `;
-  return BaseLayout(content, "Your Vehix account has been approved!");
+  return BaseLayout(content, "Your Smart Mobility Roadcare account has been approved!");
 };
 export const getWelcomeApprovalTemplate = (data: WelcomeData) => {
   const content = `
-    <h1 style="text-align: center; color: ${COLORS.secondary};">Welcome to Vehix, ${data.userName}!</h1>
+    <h1 style="text-align: center; color: ${COLORS.secondary};">Welcome to Smart Mobility Roadcare, ${data.userName}!</h1>
     <p>We are thrilled to have you join our platform as a <strong>${data.role}</strong>.</p>
     <p>Your account has been <strong>approved</strong> and is now fully active.</p>
     
     <div style="background-color: ${COLORS.background}; padding: 20px; border-radius: 8px; margin: 20px 0;">
       <h3 style="margin-top: 0; color: ${COLORS.primary};">Get Started Now:</h3>
       <ol style="padding-left: 20px; color: ${COLORS.text};">
-        <li style="margin-bottom: 10px;">Download the <strong>Vehix App</strong> on your mobile device.</li>
+        <li style="margin-bottom: 10px;">Download the <strong>Smart Mobility Roadcare app</strong> on your mobile device.</li>
         <li style="margin-bottom: 10px;">Log in using your credentials.</li>
         <li style="margin-bottom: 10px;">Ensure your location services are enabled.</li>
         <li>Start your shift by going online!</li>
@@ -300,5 +298,5 @@ export const getWelcomeApprovalTemplate = (data: WelcomeData) => {
       <strong>Note:</strong> Maintaining a high rating ensures priority access to new requests.
     </div>
   `;
-  return BaseLayout(content, "Welcome! Your Vehix account is approved.");
+  return BaseLayout(content, "Welcome! Your Smart Mobility Roadcare account is approved.");
 };

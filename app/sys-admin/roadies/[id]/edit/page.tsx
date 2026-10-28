@@ -310,8 +310,8 @@ export default function EditRoadiePage() {
 
       const currentUser = await getAdminProfile()
       AuditService.log(
-        "Reset Roadie Password",
-        "Roadies",
+        "Reset Mechanic Password",
+        "Mechanics",
         `Roadie: ${roadie?.first_name} ${roadie?.last_name} (${roadie?.username})`,
         currentUser?.username || currentUser?.name || currentUser?.email || "Unknown",
         { roadieId: params.id }
@@ -343,8 +343,8 @@ export default function EditRoadiePage() {
       // Audit Log
       const currentUser = await getAdminProfile()
       AuditService.log(
-        "Update Roadie",
-        "Roadies",
+        "Update Mechanic",
+        "Mechanics",
         `Roadie: ${formData.first_name} ${formData.last_name} (${formData.username})`,
         currentUser?.username || currentUser?.name || currentUser?.email || "Unknown",
         { roadieId: params.id, changes: formData }
@@ -352,7 +352,7 @@ export default function EditRoadiePage() {
 
       toast({
         title: "Success",
-        description: "Roadie updated successfully",
+        description: "Mechanic updated successfully",
       })
       router.push("/sys-admin/roadies")
     } catch (err) {
@@ -587,7 +587,7 @@ export default function EditRoadiePage() {
           <Link href="/sys-admin/roadies">
             <Button variant="ghost" className="gap-2 text-muted-foreground hover:text-foreground">
               <ArrowLeft className="h-4 w-4" />
-              Back to Roadies
+              Back to Mechanics
             </Button>
           </Link>
           <div className="flex items-center gap-2">
@@ -610,9 +610,9 @@ export default function EditRoadiePage() {
           <div className="lg:col-span-2 space-y-6">
             <div>
               <h1 className="text-2xl font-bold text-foreground">
-                {roadie ? `${roadie.first_name} ${roadie.last_name}` : "Roadie"}
+                {roadie ? `${roadie.first_name} ${roadie.last_name}` : "Mechanic"}
               </h1>
-              <p className="text-muted-foreground mt-1 font-mono">Roadie ID: {roadie?.external_id}</p>
+              <p className="text-muted-foreground mt-1 font-mono">Mechanic ID: {roadie?.external_id}</p>
             </div>
 
             <Tabs defaultValue="profile" className="space-y-6">
@@ -628,7 +628,7 @@ export default function EditRoadiePage() {
               <TabsContent value="profile">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Edit Roadie Information</CardTitle>
+                    <CardTitle>Edit Mechanic Information</CardTitle>
                     <CardDescription>
                       Update roadie details and approval status
                     </CardDescription>
@@ -758,7 +758,7 @@ export default function EditRoadiePage() {
                   <CardHeader>
                     <CardTitle>Services Provided</CardTitle>
                     <CardDescription>
-                      Manage the services this roadie is qualified to perform.
+                      Manage the services this mechanic is qualified to perform.
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -1253,9 +1253,9 @@ export default function EditRoadiePage() {
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <div>
-                        <CardTitle>Roadie Images</CardTitle>
+                        <CardTitle>Mechanic Images</CardTitle>
                         <CardDescription>
-                          Manage roadie's uploaded images and documents
+                          Manage mechanic's uploaded images and documents
                         </CardDescription>
                       </div>
                       <div className="flex gap-2">
@@ -1692,7 +1692,7 @@ export default function EditRoadiePage() {
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <div>
-                        <CardTitle>Roadie Images</CardTitle>
+                        <CardTitle>Mechanic Images</CardTitle>
                         <CardDescription>
                           Manage roadie's uploaded images and documents
                         </CardDescription>
@@ -2057,12 +2057,12 @@ export default function EditRoadiePage() {
 
           {/* Right Column - Stats & Info */}
           <div className="space-y-6">
-            {/* Roadie Info Card */}
+            {/* Mechanic Info Card */}
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <User className="h-5 w-5" />
-                  Roadie Information
+                  Mechanic Information
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -2202,7 +2202,7 @@ export default function EditRoadiePage() {
                   }}
                 >
                   <Download className="h-4 w-4" />
-                  Export Roadie Data
+                  Export Mechanic Data
                 </Button>
               </CardContent>
             </Card>

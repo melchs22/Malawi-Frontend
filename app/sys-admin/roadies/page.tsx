@@ -287,15 +287,15 @@ export default function RoadiesPage() {
 
       const currentUser = await getAdminProfile()
       AuditService.log(
-        "Delete Roadie",
-        "Roadies",
+        "Delete Mechanic",
+        "Mechanics",
         `Roadie: ${roadie.first_name} ${roadie.last_name} (${roadie.username})`,
         currentUser?.username || currentUser?.name || currentUser?.email || "Unknown",
         { roadieId: roadie.id, externalId: roadie.external_id }
       )
       toast({
         title: "Success",
-        description: "Roadie deleted successfully"
+        description: "Mechanic deleted successfully"
       })
       fetchRoadies()
     } catch (err) {
@@ -313,8 +313,8 @@ export default function RoadiesPage() {
 
       const currentUser = await getAdminProfile()
       AuditService.log(
-        "Bulk Delete Roadies",
-        "Roadies",
+        "Bulk Delete Mechanics",
+        "Mechanics",
         `Deleted ${selectedRoadies.length} roadies`,
         currentUser?.username || currentUser?.name || currentUser?.email || "Unknown",
         { count: selectedRoadies.length, roadieIds: selectedRoadies.map(r => r.id) }
@@ -343,8 +343,8 @@ export default function RoadiesPage() {
 
       const currentUser = await getAdminProfile()
       AuditService.log(
-        newStatus ? "Approve Roadie" : "Unapprove Roadie",
-        "Roadies",
+        newStatus ? "Approve Mechanic" : "Unapprove Mechanic",
+        "Mechanics",
         `Roadie: ${roadie.first_name} ${roadie.last_name} (${roadie.username})`,
         currentUser?.username || currentUser?.name || currentUser?.email || "Unknown",
         { roadieId: roadie.id, externalId: roadie.external_id, newStatus }
@@ -403,7 +403,7 @@ export default function RoadiesPage() {
 
   const columns = [
     {
-      header: "Roadie ID",
+      header: "Mechanic ID",
       accessor: "external_id" as const,
       cell: (value: string, row: RoadieWithThumbnail) => (
         <div className="flex items-center gap-3">
@@ -578,9 +578,9 @@ export default function RoadiesPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-foreground font-mono">Roadies</h1>
+          <h1 className="text-3xl font-bold tracking-tight text-foreground font-mono">Mechanics</h1>
           <p className="text-sm text-muted-foreground mt-1 text-mono">
-            Manage roadside service providers Accounts
+            Manage mechanic accounts
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -590,7 +590,7 @@ export default function RoadiesPage() {
             className="gap-2 bg-primary hover:bg-primary/90 text-white font-mono h-10"
           >
             <Plus className="h-4 w-4" />
-            Add Roadie
+            Add Mechanic
           </PermissionButton>
         </div>
       </div>
@@ -598,7 +598,7 @@ export default function RoadiesPage() {
       {/* Stats Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3 font-mono">
         {[
-          { label: "Total Roadies", value: totalRoadies, color: "text-foreground" },
+          { label: "Total Mechanics", value: totalRoadies, color: "text-foreground" },
           { label: "Approved", value: approvedRoadies, color: "text-emerald-500" },
           { label: "Unapproved", value: unapprovedRoadies, color: "text-amber-500" },
           { label: "Active (7d)", value: activeLast7Days, color: "text-blue-500" },
@@ -820,7 +820,7 @@ export default function RoadiesPage() {
             ) : (
               <EmptyState
                 title="Database Empty"
-                description="No roadie records were found in the system."
+                description="No mechanic records were found in the system."
                 action={
                   canAdd ? (
                     <Button
@@ -828,7 +828,7 @@ export default function RoadiesPage() {
                       className="gap-2 bg-primary text-white font-mono"
                     >
                       <Plus className="h-4 w-4" />
-                      Add First Roadie
+                      Add First Mechanic
                     </Button>
                   ) : undefined
                 }
@@ -843,10 +843,10 @@ export default function RoadiesPage() {
             onDelete={canDelete ? handleDelete : undefined}
             onBulkDelete={canDelete ? handleBulkDelete : undefined}
             onExport={() => { }}
-            deleteConfirmTitle="Delete Roadie"
-            deleteConfirmDescription="Are you sure you want to delete this roadie account? This action cannot be undone."
-            bulkDeleteConfirmTitle="Delete Multiple Roadies"
-            bulkDeleteConfirmDescription="Are you sure you want to delete the selected roadie accounts? This action cannot be undone."
+            deleteConfirmTitle="Delete Mechanic"
+            deleteConfirmDescription="Are you sure you want to delete this mechanic account? This action cannot be undone."
+            bulkDeleteConfirmTitle="Delete Multiple Mechanics"
+            bulkDeleteConfirmDescription="Are you sure you want to delete the selected mechanic accounts? This action cannot be undone."
             renderConfirmDetails={(roadie) => (
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">

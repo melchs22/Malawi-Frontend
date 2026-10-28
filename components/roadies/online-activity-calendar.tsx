@@ -100,7 +100,7 @@ export function OnlineActivityCalendar({ calendar }: Props) {
             <p className="text-sm text-muted-foreground">
               {selectedDate
                 ? "No online sessions recorded for this day."
-                : "Click a highlighted date to see when this roadie was online."}
+                : "Click a highlighted date to see when this mechanic was online."}
             </p>
           ) : (
             <div className="space-y-3">

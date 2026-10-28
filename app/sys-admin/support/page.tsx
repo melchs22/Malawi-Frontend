@@ -17,6 +17,7 @@ import { Badge } from "@/components/ui/badge"
 import { useCan } from "@/components/auth/permission-guard"
 import { PERMISSIONS } from "@/lib/permissions"
 import { useToast } from "@/hooks/use-toast"
+import { API_BASE_URL } from "@/lib/api-config"
 import { ConfirmModal } from "@/components/ui/confirm-modal"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
@@ -184,7 +185,7 @@ export default function SupportPage() {
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight">Support & Inquiries</h1>
-                    <p className="text-gray-500">Manage support messages from Riders and Roadies</p>
+                    <p className="text-gray-500">Manage support messages from Drivers and Mechanics</p>
                 </div>
             </div>
 
@@ -237,8 +238,8 @@ export default function SupportPage() {
                                         </SelectTrigger>
                                         <SelectContent>
                                             <SelectItem value="ALL">All Users</SelectItem>
-                                            <SelectItem value="RIDER">Riders</SelectItem>
-                                            <SelectItem value="RODIE">Roadies</SelectItem>
+                                            <SelectItem value="RIDER">Drivers</SelectItem>
+                                            <SelectItem value="RODIE">Mechanics</SelectItem>
                                         </SelectContent>
                                     </Select>
                                 </div>
@@ -352,7 +353,7 @@ export default function SupportPage() {
                                             </TableCell>
                                             <TableCell>
                                                 <Badge className={getUserTypeColor(ticket.user_type)}>
-                                                    {ticket.user_type === "RIDER" ? "Rider" : "Roadie"}
+                                                    {ticket.user_type === "RIDER" ? "Driver" : "Mechanic"}
                                                 </Badge>
                                             </TableCell>
                                             <TableCell>
@@ -417,7 +418,7 @@ export default function SupportPage() {
                                     <div>
                                         <Label className="text-xs text-gray-600">Type</Label>
                                         <Badge className={getUserTypeColor(selectedTicket.user_type)}>
-                                            {selectedTicket.user_type === "RIDER" ? "Rider" : "Roadie"}
+                                            {selectedTicket.user_type === "RIDER" ? "Driver" : "Mechanic"}
                                         </Badge>
                                     </div>
                                     <div>
@@ -579,7 +580,7 @@ function DisputesSection() {
     const fetchDisputes = async () => {
         setIsLoading(true)
         try {
-            const response = await fetch("/api/auth/admin/disputes/", {
+            const response = await fetch(`${API_BASE_URL}/api/auth/admin/disputes/`, {
                 headers: { "Authorization": `Bearer ${localStorage.getItem("access_token")}` }
             })
             if (response.ok) {
@@ -594,7 +595,7 @@ function DisputesSection() {
     }
 
     const updateDispute = async (id: number, data: Partial<Dispute>) => {
-        const response = await fetch(`/api/auth/admin/disputes/${id}/`, {
+        const response = await fetch(`${API_BASE_URL}/api/auth/admin/disputes/${id}/`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -609,7 +610,7 @@ function DisputesSection() {
     const confirmDelete = async () => {
         if (!pendingDeleteDispute) return
         try {
-            await fetch(`/api/auth/admin/disputes/${pendingDeleteDispute.id}/`, {
+            await fetch(`${API_BASE_URL}/api/auth/admin/disputes/${pendingDeleteDispute.id}/`, {
                 method: "DELETE",
                 headers: { "Authorization": `Bearer ${localStorage.getItem("access_token")}` }
             })

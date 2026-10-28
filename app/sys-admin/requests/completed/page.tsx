@@ -295,10 +295,10 @@ export default function CompletedRequestsPage() {
         try {
             const headers = [
                 'ID',
-                'Rider ID',
-                'Rider Username',
-                'Roadie ID',
-                'Roadie Username',
+                'Driver ID',
+                'Driver Username',
+                'Mechanic ID',
+                'Mechanic Username',
                 'Service Type ID',
                 'Service Type Name',
                 'Service Code',
@@ -428,7 +428,7 @@ export default function CompletedRequestsPage() {
             ),
         },
         {
-            header: "Rider",
+            header: "Driver",
             accessor: "rider_username" as const,
             cell: (value: string | null) => (
                 <span className={value ? "" : "text-muted-foreground italic"}>
@@ -437,7 +437,7 @@ export default function CompletedRequestsPage() {
             ),
         },
         {
-            header: "Roadie",
+            header: "Mechanic",
             accessor: "rodie_username" as const,
             cell: (value: string | null) => (
                 <span className={value ? "" : "text-muted-foreground italic"}>
@@ -849,8 +849,8 @@ export default function CompletedRequestsPage() {
                         No completed requests found for "{searchQuery}". Try searching by:
                         <ul className="list-disc pl-5 mt-1 space-y-1">
                             <li>Request ID</li>
-                            <li>Rider username</li>
-                            <li>Roadie username</li>
+                            <li>Driver username</li>
+                            <li>Mechanic username</li>
                             <li>Service name (e.g., BATTERY)</li>
                             <li>Service code</li>
                             <li>Service time (e.g., "5 min", "1 hr")</li>
@@ -952,7 +952,7 @@ export default function CompletedRequestsPage() {
                                         <span className="font-mono text-white">#{request.id}</span>
                                     </div>
                                     <div className="flex justify-between text-sm">
-                                        <span className="text-muted-foreground">Rider:</span>
+                                        <span className="text-muted-foreground">Driver:</span>
                                         <span className="text-white">{request.rider_username}</span>
                                     </div>
                                     <div className="flex justify-between text-sm">

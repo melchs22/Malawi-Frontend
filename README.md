@@ -1,8 +1,8 @@
-# <img src="public/logo.png" height="40" alt="Vehix Logo" /> Vehix Admin OPS
+# <img src="public/smart-mobility-roadcare-logo.png" height="40" alt="Smart Mobility Roadcare" /> Smart Mobility Roadcare
 
-**Advanced Command & Intelligence Platform for Vehix Roadside Services.**
+**Administration platform for Smart Mobility Roadcare roadside services.**
 
-Vehix Admin OPS is a high-performance, real-time administration dashboard built for the next generation of roadside assistance. It features a premium **Glassmorphism** design, real-time geolocation tracking, secure internal communications, and a multi-layered permission system.
+Smart Mobility Roadcare is a high-performance, real-time administration dashboard for roadside assistance. It features real-time geolocation tracking, secure internal communications, and a multi-layered permission system.
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.1.4-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
@@ -25,7 +25,7 @@ Vehix Admin OPS is a high-performance, real-time administration dashboard built 
 - **Firewall Management**: Advanced IP-based access control and security rules.
 
 ### 🗺️ Live Operations Map
-- **Geo-Tracking**: Real-time GPS tracking for active Roadies and service requests.
+- **Geo-Tracking**: Real-time GPS tracking for active Mechanics and service requests.
 - **Interactive Clusters**: High-performance rendering of dense service areas.
 - **Status Context**: Visual indicators for en-route, arrived, and pending assignments.
 
@@ -68,6 +68,10 @@ Vehix Admin OPS is a high-performance, real-time administration dashboard built 
 2. **Environment Configuration**:
    Create a `.env.local` file:
    ```env
+   # Django backend API (served directly; no Next.js API proxy)
+   NEXT_PUBLIC_API_URL=https://backend.vehix.ug
+   NEXT_PUBLIC_APP_URL=http://201.79.44.165
+
    # Admin Credentials
    ADMIN_USERNAME=admin
    ADMIN_PASSWORD=your_secure_password
@@ -106,7 +110,7 @@ The platform utilizes a **Mantis-inspired design system** with specific brand al
 
 ## 🔐 Security Policy
 
-Security is a primary pillar of the Vehix Admin platform. We utilize modern authentication standards and granular permission guards. For more details, see [SECURITY.md](SECURITY.md).
+Security is a primary pillar of the Smart Mobility Roadcare administration platform. We use modern authentication standards and granular permission guards. For more details, see [SECURITY.md](SECURITY.md).
 
 ## 📝 License
 
@@ -114,4 +118,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Made with ❤️ for Vehix. Engineering Excellence in Roadside Operations.**
+**Smart Mobility Roadcare — roadside assistance operations.**

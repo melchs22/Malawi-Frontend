@@ -65,25 +65,25 @@ const navigationItems: Array<{ section: string; items: NavItem[] }> = [
     section: "MANAGEMENT",
     items: [
       {
-        name: "Roadies",
+        name: "Mechanics",
         href: "/sys-admin/roadies",
         icon: UserCheck,
         hasSubItems: true,
         permission: PERMISSIONS.ROADIES_VIEW,
         items: [
-          { name: "All Roadies", href: "/sys-admin/roadies", icon: List, permission: PERMISSIONS.ROADIES_VIEW },
+          { name: "All Mechanics", href: "/sys-admin/roadies", icon: List, permission: PERMISSIONS.ROADIES_VIEW },
           { name: "Add New", href: "/sys-admin/roadies/add", icon: Plus, permission: PERMISSIONS.ROADIES_ADD },
           { name: "Deleted", href: "/sys-admin/roadies/deleted", icon: Trash2, permission: PERMISSIONS.ROADIES_DELETE },
         ]
       },
       {
-        name: "Riders",
+        name: "Drivers",
         href: "/sys-admin/riders",
         icon: Users,
         hasSubItems: true,
         permission: PERMISSIONS.RIDERS_VIEW,
         items: [
-          { name: "All Riders", href: "/sys-admin/riders", icon: List, permission: PERMISSIONS.RIDERS_VIEW },
+          { name: "All Drivers", href: "/sys-admin/riders", icon: List, permission: PERMISSIONS.RIDERS_VIEW },
           { name: "Add New", href: "/sys-admin/riders/add", icon: Plus, permission: PERMISSIONS.RIDERS_ADD },
           { name: "Deleted", href: "/sys-admin/riders/deleted", icon: Trash2, permission: PERMISSIONS.RIDERS_DELETE },
         ]
@@ -135,8 +135,8 @@ const navigationItems: Array<{ section: string; items: NavItem[] }> = [
         hasSubItems: true,
         permission: PERMISSIONS.MEDIA_VIEW,
         items: [
-          { name: "Rider Moderation", href: "/sys-admin/moderation/media?type=riders", icon: Users, permission: PERMISSIONS.MEDIA_VIEW },
-          { name: "Roadie Moderation", href: "/sys-admin/moderation/media?type=roadies", icon: UserCheck, permission: PERMISSIONS.MEDIA_VIEW },
+          { name: "Driver Moderation", href: "/sys-admin/moderation/media?type=riders", icon: Users, permission: PERMISSIONS.MEDIA_VIEW },
+          { name: "Mechanic Moderation", href: "/sys-admin/moderation/media?type=roadies", icon: UserCheck, permission: PERMISSIONS.MEDIA_VIEW },
         ]
       },
       {
@@ -266,11 +266,11 @@ export function AdminSidebar() {
         {sidebarOpen && (
           <div className="flex items-center gap-3">
             <div className="h-8 w-8 relative flex items-center justify-center">
-              <img src="/vehix-logo.png" alt="Vehix Logo" className="h-full w-auto object-contain" />
+              <img src="/smart-mobility-roadcare-favicon.png" alt="Smart Mobility Roadcare" className="h-full w-auto object-contain" />
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-foreground text-sm tracking-tight leading-none">
-                VEHIX <span className="text-primary">OPS</span>
+                Smart Mobility <span className="text-primary">Roadcare</span>
               </span>
               <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-[0.2em]">Management</span>
             </div>

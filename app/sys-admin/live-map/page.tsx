@@ -121,7 +121,7 @@ function InfoCard({
             <div>
               <div className="flex items-center gap-2">
                 <div className="h-3 w-3 rounded-full bg-blue-600" />
-                <h3 className="font-semibold text-foreground">Rider</h3>
+                <h3 className="font-semibold text-foreground">Driver</h3>
               </div>
               <p className="text-sm font-medium mt-1">
                 {r.rider_first_name} {r.rider_last_name}
@@ -136,7 +136,7 @@ function InfoCard({
             <p><span className="text-muted-foreground">Contact:</span> {r.rider_phone || "—"}</p>
             <p><span className="text-muted-foreground">Service:</span> {r.service_type}</p>
             <p>
-              <span className="text-muted-foreground">Roadie:</span>{" "}
+              <span className="text-muted-foreground">Mechanic:</span>{" "}
               {roadie
                 ? `${roadie.rodie_first_name || ""} ${roadie.rodie_last_name || ""}`.trim() ||
                   roadie.rodie_username ||
@@ -167,7 +167,7 @@ function InfoCard({
           <div>
             <div className="flex items-center gap-2">
               <div className="h-3 w-3 rounded-full bg-green-600" />
-              <h3 className="font-semibold text-foreground">Roadie</h3>
+              <h3 className="font-semibold text-foreground">Mechanic</h3>
             </div>
             <p className="text-sm font-medium mt-1">
               {r.rodie_first_name} {r.rodie_last_name}
@@ -192,7 +192,7 @@ function InfoCard({
           </p>
           {r.activity_status === "ON_JOB" && rider && (
             <p>
-              <span className="text-muted-foreground">Rider assigned:</span>{" "}
+              <span className="text-muted-foreground">Driver assigned:</span>{" "}
               {`${rider.rider_first_name || ""} ${rider.rider_last_name || ""}`.trim() ||
                 rider.rider_username ||
                 rider.rider_external_id}
@@ -341,7 +341,7 @@ export default function LiveServiceMap() {
             </div>
           </div>
           <div className="space-y-1">
-            <p className="text-xs text-muted-foreground">Roadie status</p>
+            <p className="text-xs text-muted-foreground">Mechanic status</p>
             <div className="flex flex-wrap gap-1">
               {["AVAILABLE", "ON_JOB"].map((status) => (
                 <Button
@@ -357,10 +357,10 @@ export default function LiveServiceMap() {
             </div>
           </div>
           <div className="space-y-1 min-w-[200px]">
-            <p className="text-xs text-muted-foreground">Rider (active on map)</p>
+            <p className="text-xs text-muted-foreground">Driver (active on map)</p>
             <div className="flex flex-wrap gap-1 max-h-24 overflow-y-auto">
               {filteredRiders.length === 0 ? (
-                <span className="text-xs text-muted-foreground">No active riders</span>
+                <span className="text-xs text-muted-foreground">No active drivers</span>
               ) : (
                 filteredRiders.map((r) => (
                   <Button
@@ -414,8 +414,8 @@ export default function LiveServiceMap() {
         </div>
 
         <div className="absolute top-4 right-4 z-[1000] flex gap-2 text-xs">
-          <Badge className="bg-blue-600">{filteredRiders.length} Riders</Badge>
-          <Badge className="bg-green-600">{filteredRoadies.length} Roadies</Badge>
+          <Badge className="bg-blue-600">{filteredRiders.length} Drivers</Badge>
+          <Badge className="bg-green-600">{filteredRoadies.length} Mechanics</Badge>
         </div>
 
         {selected && <InfoCard selected={selected} onClose={() => setSelected(null)} />}

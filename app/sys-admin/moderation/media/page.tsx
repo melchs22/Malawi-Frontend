@@ -301,8 +301,8 @@ export default function MediaModerationPage() {
 
             <Tabs defaultValue="roadies" value={activeTab} onValueChange={(v: any) => setActiveTab(v)}>
                 <TabsList className="grid w-full grid-cols-2 max-w-[400px]">
-                    <TabsTrigger value="roadies" className="font-semibold tracking-wider">Roadies Validation</TabsTrigger>
-                    <TabsTrigger value="riders" className="font-semibold tracking-wider">Riders Validation</TabsTrigger>
+                    <TabsTrigger value="roadies" className="font-semibold tracking-wider">Mechanics Validation</TabsTrigger>
+                    <TabsTrigger value="riders" className="font-semibold tracking-wider">Drivers Validation</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="roadies">

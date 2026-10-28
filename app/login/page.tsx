@@ -295,7 +295,7 @@ export default function LoginPage() {
           <CardContent className="pt-6">
             <div className="flex flex-col items-center justify-center space-y-4">
               <div className="relative">
-                <img src="/vehix-logo.png" alt="Vehix" className="h-12 w-auto animate-pulse" />
+                <img src="/smart-mobility-roadcare-logo.png" alt="Smart Mobility Roadcare" className="h-12 w-auto animate-pulse" />
                 <Loader2 className="absolute -top-2 -right-2 h-6 w-6 animate-spin text-primary" />
               </div>
               <p className="text-lg font-medium text-foreground">Checking server connection...</p>
@@ -320,15 +320,15 @@ export default function LoginPage() {
           {/* Clean logo container */}
           <div className="mx-auto flex h-24 w-auto items-center justify-center p-2">
             <img
-              src="/vehix-logo.png"
-              alt="Vehix Logo"
+              src="/smart-mobility-roadcare-logo.png"
+              alt="Smart Mobility Roadcare"
               className="h-full w-auto object-contain"
             />
           </div>
 
           <div className="space-y-2">
             <CardTitle className="text-3xl font-bold text-foreground">
-              Vehix Admin
+              Smart Mobility Roadcare
             </CardTitle>
             <CardDescription className="text-muted-foreground">
               {showTwoFactorSetup ? "Register Authenticator Device" : showTwoFactor ? "Two-Factor Authentication" : "Secure Access to Administration Panel"}
@@ -628,7 +628,7 @@ export default function LoginPage() {
       {/* Clean footer */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
         <p className="text-sm text-muted-foreground">
-          © 2026 Vehix Admin Portal • All Rights Reserved
+          © 2026 Smart Mobility Roadcare • All Rights Reserved
         </p>
       </div>
     </div>

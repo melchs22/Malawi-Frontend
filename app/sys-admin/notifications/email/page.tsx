@@ -1072,13 +1072,13 @@ export default function SendEmailPage() {
                                                     <SelectItem value="ALL_RIDERS">
                                                         <div className="flex items-center gap-2">
                                                             <Users className="h-4 w-4" />
-                                                            <span>All Riders ({recipients.filter(r => r.role === 'Rider').length})</span>
+                                                            <span>All Drivers ({recipients.filter(r => r.role === 'Rider').length})</span>
                                                         </div>
                                                     </SelectItem>
                                                     <SelectItem value="ALL_ROADIES">
                                                         <div className="flex items-center gap-2">
                                                             <Users className="h-4 w-4" />
-                                                            <span>All Roadies ({recipients.filter(r => r.role === 'Roadie').length})</span>
+                                                            <span>All Mechanics ({recipients.filter(r => r.role === 'Roadie').length})</span>
                                                         </div>
                                                     </SelectItem>
                                                     <SelectItem value="ALL_ADMINS">

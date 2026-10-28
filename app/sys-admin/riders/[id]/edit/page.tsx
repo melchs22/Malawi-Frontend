@@ -192,8 +192,8 @@ export default function EditRiderPage() {
 
       const currentUser = await getAdminProfile()
       AuditService.log(
-        "Reset Rider Password",
-        "Riders",
+        "Reset Driver Password",
+        "Drivers",
         `Rider: ${rider?.first_name} ${rider?.last_name} (${rider?.username})`,
         currentUser?.username || currentUser?.name || currentUser?.email || "Unknown",
         { riderId: params.id }
@@ -225,8 +225,8 @@ export default function EditRiderPage() {
       // Audit Log
       const currentUser = await getAdminProfile()
       AuditService.log(
-        "Update Rider",
-        "Riders",
+        "Update Driver",
+        "Drivers",
         `Rider: ${formData.first_name} ${formData.last_name} (${formData.username})`,
         currentUser?.username || currentUser?.name || currentUser?.email || "Unknown",
         { riderId: params.id, changes: formData }
@@ -234,7 +234,7 @@ export default function EditRiderPage() {
 
       toast({
         title: "Success",
-        description: "Rider updated successfully",
+        description: "Driver updated successfully",
       })
       router.push("/sys-admin/riders")
     } catch (err) {
@@ -504,7 +504,7 @@ export default function EditRiderPage() {
           <Link href="/sys-admin/riders">
             <Button variant="ghost" className="gap-2 text-muted-foreground hover:text-foreground">
               <ArrowLeft className="h-4 w-4" />
-              Back to Riders
+              Back to Drivers
             </Button>
           </Link>
           <div className="flex items-center gap-2">
@@ -526,8 +526,8 @@ export default function EditRiderPage() {
           {/* Left Column - Edit Form */}
           <div className="lg:col-span-2 space-y-6">
             <div>
-              <h1 className="text-2xl font-bold text-foreground">Edit Rider</h1>
-              <p className="text-muted-foreground mt-1">Rider ID: {rider?.external_id}</p>
+              <h1 className="text-2xl font-bold text-foreground">Edit Driver</h1>
+              <p className="text-muted-foreground mt-1">Driver ID: {rider?.external_id}</p>
             </div>
 
             <Tabs value={activeTab} onValueChange={setActiveTab}>
@@ -540,9 +540,9 @@ export default function EditRiderPage() {
               <TabsContent value="profile" className="space-y-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Edit Rider Information</CardTitle>
+                    <CardTitle>Edit Driver Information</CardTitle>
                     <CardDescription>
-                      Update rider details and approval status
+                      Update driver details and approval status
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -616,7 +616,7 @@ export default function EditRiderPage() {
                           Approved
                         </label>
                         <span className="text-xs text-muted-foreground ml-2">
-                          {formData.is_approved ? "Rider can request services" : "Rider approval revoked"}
+                          {formData.is_approved ? "Driver can request services" : "Driver approval revoked"}
                         </span>
                       </div>
 
@@ -634,7 +634,7 @@ export default function EditRiderPage() {
                         </label>
                         <span className="text-xs text-muted-foreground ml-2">
                           {formData.is_active
-                            ? "Rider can sign in and use the app"
+                            ? "Driver can sign in and use the app"
                             : "Account suspended — rider cannot access the app"}
                         </span>
                       </div>
@@ -671,7 +671,7 @@ export default function EditRiderPage() {
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <div>
-                        <CardTitle>Rider Images</CardTitle>
+                        <CardTitle>Driver Images</CardTitle>
                         <CardDescription>
                           Manage rider's uploaded images and documents
                         </CardDescription>
@@ -1245,7 +1245,7 @@ export default function EditRiderPage() {
                       </div>
                     ) : (
                       <div className="text-center py-8 text-gray-500">
-                        No service statistics available for this rider
+                        No service statistics available for this driver
                       </div>
                     )}
                   </CardContent>
@@ -1256,12 +1256,12 @@ export default function EditRiderPage() {
 
           {/* Right Column - Stats & Info */}
           <div className="space-y-6">
-            {/* Rider Info Card */}
+            {/* Driver Info Card */}
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <User className="h-5 w-5" />
-                  Rider Information
+                  Driver Information
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -1495,7 +1495,7 @@ export default function EditRiderPage() {
                   }}
                 >
                   <Check className="h-4 w-4" />
-                  Export Rider Data
+                  Export Driver Data
                 </Button>
               </CardContent>
             </Card>
