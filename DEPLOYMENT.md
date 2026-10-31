@@ -21,8 +21,10 @@ bash ./scripts/deploy-production.sh
 
 The script builds locally, copies the source to the server, installs the locked
 dependencies, builds on the server, restarts the service, and checks its
-response. It preserves `.env*`, `.next`, `node_modules`, `auth.db`, and local
-dashboard data on the server. It does not deploy secrets from the PC.
+response. The source sync excludes server `.env*`, `.next`, `node_modules`,
+`auth.db`, uploads, and local dashboard data. The server-side step rebuilds
+`.next` and `node_modules` with rollback copies; it does not deploy secrets
+from the PC.
 
 ## Deploy through GitHub
 
@@ -50,9 +52,10 @@ You can also run the workflow manually under
 ## Runtime-state protection and rollback
 
 The server's `.env`, `.env.production`, `auth.db`, and dashboard data are
-preserved. The deployment keeps the existing `.next` build as a rollback copy
-until the new build succeeds; on build failure, it restores that build and
-leaves the running service alone.
+preserved. The deployment stops the service during the server-side dependency
+install/build, retaining the existing `.next` build and `node_modules` as
+rollback copies. If the build, restart, or health check fails, it restores both
+and restarts the previous service version.
 
 For rollback, redeploy a previously successful commit from Actions or check out
 that commit on a PC and rerun the script. Do not delete the live `auth.db` or
