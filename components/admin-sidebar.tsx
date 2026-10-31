@@ -31,7 +31,9 @@ import {
   FileText,
   Clock,
   Activity,
-  ArrowUpCircle
+  ArrowUpCircle,
+  Building2,
+  CalendarDays,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -93,6 +95,17 @@ const navigationItems: Array<{ section: string; items: NavItem[] }> = [
         href: "/sys-admin/services",
         icon: Wrench,
         permission: PERMISSIONS.SERVICES_VIEW,
+      },
+      {
+        name: "Workshops",
+        href: "/sys-admin/workshops",
+        icon: Building2,
+        hasSubItems: true,
+        permission: PERMISSIONS.WORKSHOPS_VIEW,
+        items: [
+          { name: "Service Centres", href: "/sys-admin/workshops", icon: Building2, permission: PERMISSIONS.WORKSHOPS_VIEW },
+          { name: "Workshop Bookings", href: "/sys-admin/workshop-bookings", icon: CalendarDays, permission: PERMISSIONS.WORKSHOP_BOOKINGS_VIEW },
+        ]
       },
       {
         name: "Wallets",

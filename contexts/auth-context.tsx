@@ -1,6 +1,7 @@
 "use client"
 
 import React, { createContext, useContext, useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { UserRole, getUserRole, hasPermission, hasAnyPermission, hasAllPermissions, PERMISSIONS } from '@/lib/permissions'
 import type { Permission } from '@/lib/permissions'
 import { getAccessToken, fetchLocalPermissions, getPlatformConfig } from '@/lib/api'
@@ -42,6 +43,8 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
+    const pathname = usePathname()
+    const isPublicPage = pathname === "/" || pathname === "/terms-and-conditions"
     const [user, setUser] = useState<User | null>(null)
     const [isLoading, setIsLoading] = useState(true)
     const [sidebarOpen, setSidebarOpenState] = useState(true)
@@ -55,6 +58,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
 
     useEffect(() => {
+        if (isPublicPage) {
+            setIsLoading(false)
+            return
+        }
+
         const initializeAuth = async () => {
             console.log("[Auth] Initializing...")
             try {
@@ -188,7 +196,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
 
         init()
-    }, [])
+    }, [isPublicPage])
 
     useEffect(() => {
         localStorage.setItem('sidebar_open', JSON.stringify(sidebarOpen))
@@ -260,7 +268,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     // Strict 2FA enforcement - redirect to my-account if 2FA is not enabled and dismissals >= 3
     useEffect(() => {
-        if (!user || isLoading) return
+        if (!user || isLoading || isPublicPage) return
 
         // Skip 2FA check for the my-account page itself to avoid redirect loop
         const currentPath = window.location.pathname
@@ -275,7 +283,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 window.location.href = '/sys-admin/my-account'
             }
         }
-    }, [user, isLoading])
+    }, [user, isLoading, isPublicPage])
 
 
     const setSidebarOpen = (open: boolean) => {

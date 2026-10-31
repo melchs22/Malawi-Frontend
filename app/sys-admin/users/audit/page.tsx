@@ -35,8 +35,6 @@ interface MappedAuditLog {
   target: string
   severity: "info" | "warning" | "critical"
   details: unknown
-  oldValue: unknown
-  newValue: unknown
   userAgent: string
   ipAddress: string
 }
@@ -66,14 +64,6 @@ export default function AuditLogsPage() {
       severity = "warning"
     }
 
-    let oldValue = null
-    let newValue = null
-    if (log.changes && typeof log.changes === "object") {
-      const c = log.changes as Record<string, unknown>
-      oldValue = c.old ?? c.before ?? null
-      newValue = c.new ?? c.after ?? null
-    }
-
     return {
       id: log.id,
       timestamp: log.created_at,
@@ -83,8 +73,6 @@ export default function AuditLogsPage() {
       target: log.target_username || (log.target_entity_id ? `${log.target_entity_type || 'Entity'} ${log.target_entity_id}` : "System"),
       severity,
       details: log.changes,
-      oldValue,
-      newValue,
       userAgent: "Server-side audit",
       ipAddress: log.ip_address || "Unknown",
     }
@@ -265,10 +253,10 @@ export default function AuditLogsPage() {
       header: "Details",
       accessor: "id",
       cell: (_, row: MappedAuditLog) => (
-        row.oldValue || row.newValue ? (
-          <DiffViewer oldVal={row.oldValue} newVal={row.newValue} />
+        row.details && Object.keys(row.details as object).length > 0 ? (
+          <DiffViewer changes={row.details} />
         ) : (
-          <span className="text-xs text-muted-foreground">—</span>
+          <span className="text-xs text-muted-foreground">No change details recorded</span>
         )
       ),
     },

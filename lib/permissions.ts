@@ -37,6 +37,11 @@ export const PERMISSIONS = {
     REQUESTS_DELETE: 'requests.delete',
     REQUESTS_ASSIGN: 'requests.assign',
 
+    // Workshops and scheduled servicing
+    WORKSHOPS_VIEW: 'workshops.view',
+    WORKSHOPS_MANAGE: 'workshops.manage',
+    WORKSHOP_BOOKINGS_VIEW: 'workshop_bookings.view',
+
     // Dashboard
     DASHBOARD_VIEW: 'dashboard.view',
 
@@ -143,6 +148,9 @@ export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
         PERMISSIONS.REQUESTS_CHANGE,
         PERMISSIONS.REQUESTS_DELETE,
         PERMISSIONS.REQUESTS_ASSIGN,
+        PERMISSIONS.WORKSHOPS_VIEW,
+        PERMISSIONS.WORKSHOPS_MANAGE,
+        PERMISSIONS.WORKSHOP_BOOKINGS_VIEW,
 
         // New Permissions
         PERMISSIONS.MEDIA_VIEW,
@@ -185,6 +193,8 @@ export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
         PERMISSIONS.REQUESTS_VIEW,
         PERMISSIONS.REQUESTS_CHANGE,
         PERMISSIONS.REQUESTS_ASSIGN,
+        PERMISSIONS.WORKSHOPS_VIEW,
+        PERMISSIONS.WORKSHOP_BOOKINGS_VIEW,
     ],
 
     VIEWER: [
@@ -195,6 +205,8 @@ export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
         PERMISSIONS.ROADIES_VIEW,
         PERMISSIONS.SERVICES_VIEW,
         PERMISSIONS.REQUESTS_VIEW,
+        PERMISSIONS.WORKSHOPS_VIEW,
+        PERMISSIONS.WORKSHOP_BOOKINGS_VIEW,
     ],
 
     OPERATOR: [
@@ -206,6 +218,8 @@ export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
         PERMISSIONS.REQUESTS_ASSIGN,
         PERMISSIONS.RIDERS_VIEW,
         PERMISSIONS.ROADIES_VIEW,
+        PERMISSIONS.WORKSHOPS_VIEW,
+        PERMISSIONS.WORKSHOP_BOOKINGS_VIEW,
     ],
 }
 

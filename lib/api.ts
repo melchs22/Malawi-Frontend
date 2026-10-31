@@ -2096,3 +2096,267 @@ export async function rejectWithdrawal(id: number, rejectionReason?: string): Pr
     })
   })
 }
+
+export type WorkshopVerificationStatus =
+  | 'SUBMITTED'
+  | 'UNDER_REVIEW'
+  | 'VERIFIED'
+  | 'REJECTED'
+  | 'SUSPENDED'
+
+export type WorkshopReviewAction = 'under_review' | 'verify' | 'reject' | 'suspend'
+
+export interface AdminWorkshop {
+  id: number
+  name: string
+  garage_type: string
+  physical_address: string
+  latitude: string | number | null
+  longitude: string | number | null
+  operating_hours: Record<string, string>
+  years_in_operation?: number
+  primary_phone: string
+  secondary_phone: string | null
+  business_email: string
+  owner_name: string
+  owner_phone: string
+  owner_email: string
+  emergency_contact_name?: string | null
+  emergency_contact_phone?: string | null
+  manager_name?: string | null
+  manager_phone?: string | null
+  manager_email?: string | null
+  owner_national_id?: string
+  tin_tax_id?: string | null
+  owner_user: number | null
+  vehicle_types: string[]
+  services_offered: string[]
+  services_not_offered: string[] | null
+  pricing_info: Record<string, unknown>
+  mechanics_count: number
+  lead_mechanic_name?: string | null
+  experience_years?: number | null
+  certifications?: string[] | null
+  specialized_skills?: string | null
+  is_price_negotiable?: boolean
+  warranty_offered?: boolean
+  warranty_duration_days?: number | null
+  avg_turnaround_hours?: number
+  emergency_service_available?: boolean
+  working_days: string[]
+  cancellation_policy?: string
+  payment_method?: string
+  account_holder_name?: string
+  account_number?: string
+  provider_name?: string
+  settlement_preference?: string
+  terms_accepted?: boolean
+  terms_accepted_at?: string | null
+  verification_status: WorkshopVerificationStatus
+  application_tracking_id: string | null
+  submission_completeness: string | number
+  registration_date: string
+  verified_at: string | null
+  verified_by: number | null
+  verified_by_name?: string | null
+  rejection_reason: string | null
+  suspension_reason: string | null
+  exterior_photo?: string | null
+  interior_workshop_photo?: string | null
+  tools_equipment_photo?: string | null
+  owner_id_front?: string | null
+  owner_id_back?: string | null
+  business_registration_cert?: string | null
+  trading_license?: string | null
+  local_authority_letter?: string | null
+  [key: string]: unknown
+}
+
+export interface AdminWorkshopStats {
+  total_garages: number
+  verified_garages: number
+  pending_garages: number
+  under_review: number
+  rejected_garages: number
+  suspended_garages: number
+  pending_bookings: number
+  unpaid_invoices: number
+  unsettled_paid_invoices: number
+  excess_payments: number
+}
+
+export interface AdminWorkshopAuditEvent {
+  id: number
+  actor_id: number | null
+  actor_name: string | null
+  event_type: string
+  from_status: string
+  to_status: string
+  reason: string
+  details: Record<string, unknown>
+  created_at: string
+}
+
+export interface WorkshopQuoteLineItem {
+  description: string
+  quantity: number
+  unit_amount: string
+}
+
+export interface AdminWorkshopQuote {
+  id: number
+  revision: number
+  line_items: WorkshopQuoteLineItem[]
+  amount: string
+  currency: string
+  scheduled_date: string
+  scheduled_time: string | null
+  status: string
+  response_reason: string
+  created_at: string
+  responded_at: string | null
+}
+
+export interface AdminWorkshopPayment {
+  id: number
+  transaction_reference: string
+  provider_reference: string | null
+  checkout_url: string
+  amount: string
+  currency: string
+  status: string
+  is_excess_payment: boolean
+  created_at: string
+  verified_at: string | null
+}
+
+export interface AdminWorkshopInvoice {
+  id: number
+  invoice_number: string
+  garage_name: string
+  amount: string
+  currency: string
+  status: string
+  issued_at: string
+  paid_at: string | null
+  payments: AdminWorkshopPayment[]
+  settlements?: Array<{
+    id: number
+    amount: string
+    transfer_reference: string
+    settled_by: number
+    settled_by_name: string
+    notes: string
+    is_final: boolean
+    settled_at: string
+  }>
+}
+
+export interface AdminWorkshopReview {
+  id: number
+  booking_id: number
+  garage_name: string
+  rider_name: string
+  rating: number
+  comment: string
+  created_at: string
+}
+
+export interface AdminWorkshopBooking {
+  id: number
+  rider: number
+  rider_name: string
+  garage: number
+  garage_name: string
+  vehicle_type: string
+  service_category: string
+  description: string
+  preferred_date: string
+  preferred_time: string | null
+  location_lat: string | null
+  location_lng: string | null
+  status: string
+  estimated_cost: string | null
+  actual_cost: string | null
+  created_at: string
+  updated_at: string
+  response_note: string
+  quotes: AdminWorkshopQuote[]
+  invoice: AdminWorkshopInvoice | null
+  review: AdminWorkshopReview | null
+}
+
+export interface AdminWorkshopDecisionResponse {
+  id: number
+  verification_status: WorkshopVerificationStatus
+  owner_account_id: number | null
+  owner_activation_email_sent: boolean
+}
+
+export async function getAdminWorkshops(filters?: {
+  status?: WorkshopVerificationStatus | 'ALL'
+  search?: string
+}): Promise<AdminWorkshop[]> {
+  const params = new URLSearchParams()
+  if (filters?.status && filters.status !== 'ALL') params.set('status', filters.status)
+  if (filters?.search?.trim()) params.set('search', filters.search.trim())
+  const query = params.toString()
+  return apiRequest<AdminWorkshop[]>(`/api/garages/admin/${query ? `?${query}` : ''}`)
+}
+
+export async function getAdminWorkshop(id: number): Promise<AdminWorkshop> {
+  return apiRequest<AdminWorkshop>(`/api/garages/admin/${id}/`)
+}
+
+export async function getAdminWorkshopStats(): Promise<AdminWorkshopStats> {
+  return apiRequest<AdminWorkshopStats>('/api/garages/admin/stats/')
+}
+
+export async function getAdminWorkshopAudit(id: number): Promise<AdminWorkshopAuditEvent[]> {
+  return apiRequest<AdminWorkshopAuditEvent[]>(`/api/garages/admin/${id}/audit/`)
+}
+
+export async function reviewAdminWorkshop(
+  id: number,
+  action: WorkshopReviewAction,
+  reason = '',
+): Promise<AdminWorkshopDecisionResponse> {
+  return apiRequest<AdminWorkshopDecisionResponse>(`/api/garages/admin/${id}/verify/`, {
+    method: 'POST',
+    body: JSON.stringify({ action, reason }),
+  })
+}
+
+export async function getAdminWorkshopBookings(filters?: {
+  status?: string
+  garageId?: number
+}): Promise<AdminWorkshopBooking[]> {
+  const params = new URLSearchParams()
+  if (filters?.status && filters.status !== 'ALL') params.set('status', filters.status)
+  if (filters?.garageId) params.set('garage', String(filters.garageId))
+  const query = params.toString()
+  return apiRequest<AdminWorkshopBooking[]>(
+    `/api/garages/admin/requests/${query ? `?${query}` : ''}`,
+  )
+}
+
+export async function recordAdminWorkshopSettlement(
+  invoiceId: number,
+  settlement: {
+    amount: number
+    transfer_reference: string
+    notes: string
+    is_final: boolean
+  },
+): Promise<{
+  id: number
+  invoice_number: string
+  amount: string
+  transfer_reference: string
+  invoice_status: string
+}> {
+  return apiRequest(`/api/garages/admin/invoices/${invoiceId}/settlements/`, {
+    method: 'POST',
+    body: JSON.stringify(settlement),
+  })
+}

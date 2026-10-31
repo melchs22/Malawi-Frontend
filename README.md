@@ -112,6 +112,10 @@ The platform utilizes a **Mantis-inspired design system** with specific brand al
 
 Security is a primary pillar of the Smart Mobility Roadcare administration platform. We use modern authentication standards and granular permission guards. For more details, see [SECURITY.md](SECURITY.md).
 
+## Production deployment
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for the direct SSH deployment script, GitHub Actions setup, protected server state, and rollback instructions.
+
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

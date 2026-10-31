@@ -1,0 +1,28 @@
+name: Deploy admin dashboard
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: admin-dashboard-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, linux, x64, smr-production]
+    if: github.ref == 'refs/heads/main'
+    environment: production
+    steps:
+      - name: Check out deployment commit
+        uses: actions/checkout@v4
+
+      - name: Build and deploy on the production runner
+        env:
+          DEPLOY_LOCAL: "1"
+        run: bash ./scripts/deploy-production.sh

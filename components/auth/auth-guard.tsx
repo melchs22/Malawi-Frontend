@@ -10,16 +10,21 @@ export function AuthGuard({ children }: { children: React.ReactNode }) {
     const router = useRouter()
     const pathname = usePathname()
     const isLoginPage = pathname === "/login"
+    const isPublicPage = pathname === "/" || pathname === "/terms-and-conditions"
 
     useEffect(() => {
-        if (isLoading) return
+        if (isLoading || isPublicPage) return
 
         if (!user && !isLoginPage) {
             router.push("/login")
         } else if (user && isLoginPage) {
             router.push("/sys-admin")
         }
-    }, [user, isLoading, isLoginPage, router])
+    }, [user, isLoading, isLoginPage, isPublicPage, router])
+
+    if (isPublicPage) {
+        return <>{children}</>
+    }
 
     if (isLoading) {
         return <PageLoader message="Secure Authentication..." />

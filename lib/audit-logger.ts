@@ -7,6 +7,7 @@
 
 import { AuditService, type AuditLog } from './audit';
 import { getAdminProfile } from './auth';
+import { apiRequest } from './api';
 
 export interface AdminAction {
   action: string;
@@ -114,12 +115,7 @@ export async function logAdminAction(action: AdminAction): Promise<void> {
     );
 
     // Send to backend API if available
-    await logToBackendAPI({
-      action,
-      adminName,
-      severity,
-      target,
-    });
+    await logToBackendAPI({ action });
   } catch (error) {
     console.error('Failed to log admin action:', error);
     // Don't throw - logging failures shouldn't break the admin UI
@@ -273,40 +269,23 @@ export function getFormattedAuditLogs(): AuditLog[] {
 /**
  * Send audit log to backend API
  */
-async function logToBackendAPI(params: {
-  action: AdminAction;
-  adminName: string;
-  severity: string;
-  target: string;
-}): Promise<void> {
+async function logToBackendAPI(params: { action: AdminAction }): Promise<void> {
   try {
-    // Only attempt if we have the backend endpoint
-    const response = await fetch('/sys-api/auth/audit-log/', {
+    await apiRequest('/api/auth/admin/audit-logs/', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify({
         action_type: params.action.action,
         action_description: params.action.description || params.action.action,
         target_entity_type: params.action.targetType,
         target_entity_id: params.action.targetId?.toString(),
-        target_username: params.target,
         changes: {
-          old: params.action.oldValue,
-          new: params.action.newValue,
-          ...params.action.details,
+          old: params.action.oldValue === undefined ? {} : params.action.oldValue,
+          new: params.action.newValue === undefined ? {} : params.action.newValue,
+          details: params.action.details ?? {},
         },
-        severity: params.severity,
       }),
     });
-
-    if (!response.ok) {
-      console.warn('Backend audit logging failed:', response.status);
-      // Don't throw - let local logging succeed even if backend fails
-    }
   } catch (error) {
     console.warn('Failed to send audit log to backend:', error);
-    // Silently fail - local logging should still work
   }
 }
