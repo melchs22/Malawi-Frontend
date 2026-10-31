@@ -32,12 +32,12 @@ SYNC_OPTIONS=(
 )
 
 if [ "${DEPLOY_LOCAL:-0}" = "1" ]; then
-  rsync -az --delete-delay "${SYNC_OPTIONS[@]}" \
+  rsync -azO --delete-delay "${SYNC_OPTIONS[@]}" \
     "$ROOT_DIR/" "${REMOTE_DIR}/"
   bash "$ROOT_DIR/scripts/deploy-server.sh"
 else
   REMOTE="${DEPLOY_USER}@${DEPLOY_HOST}"
-  rsync -az --delete-delay \
+  rsync -azO --delete-delay \
     --rsync-path="runuser -u smartmobility -- rsync" \
     "${SYNC_OPTIONS[@]}" \
     -e "ssh -o BatchMode=yes -o StrictHostKeyChecking=yes" \
